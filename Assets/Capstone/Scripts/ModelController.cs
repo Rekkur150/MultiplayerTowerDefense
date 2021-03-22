@@ -1,9 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror; //For NetworkServer
+using System; //For [Serializable]
 
 public class ModelController : MonoBehaviour
 {
+    /// <summary>
+    /// Struct to keep track of gameobject connections
+    /// </summary>
+    [Serializable]
+    public struct PrefabLinker
+    {
+        public GameObject prefab;
+        public Transform parent;
+    }
+
+
     /// <summary>
     /// Easy Reference to the character model position
     /// </summary>
@@ -15,20 +28,23 @@ public class ModelController : MonoBehaviour
         Hand
     }
 
-    public List<PrefabLinker> CharacterAdditonalModels = new List<PrefabLinker>(4);
+    public List<PrefabLinker> CharacterAdditonalModels = new List<PrefabLinker>(CharacterModel.GetNames(typeof(CharacterModel)).Length);
 
-    public void AddCharacterModel(CharacterModel charPart, GameObject newObject)
+    public void AddCharacterModel(CharacterModel characterPart, GameObject newObject)
     {
-        PrefabLinker prefabL = CharacterAdditonalModels[(int) charPart];
+        PrefabLinker prefabLinker = CharacterAdditonalModels[(int)characterPart];
 
-        
+        RemoveCharacterModel(characterPart);
+
+        GameObject instatiatedObject = Instantiate(newObject, prefabLinker.parent);
+        NetworkServer.Spawn(instatiatedObject);
 
     }
 
-
-    // Update is called once per frame
-    void Update()
+    public void RemoveCharacterModel(CharacterModel charPart)
     {
-        
+        PrefabLinker prefabLinker = CharacterAdditonalModels[(int)charPart];
+        NetworkServer.Destroy(prefabLinker.prefab);
+        prefabLinker.prefab = null;
     }
 }
