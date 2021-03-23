@@ -30,6 +30,9 @@ public class PlayerController : Character
         [Tooltip("The layers that count as a jumpable surface")]
         public LayerMask JumpMask;
 
+        [Tooltip("Places where we shall check to see if the player is on the floor")]
+        public List<Transform> FeetPoints;
+
         //Private
         private Vector3 Velocity;
         private bool IsGrounded;
@@ -112,7 +115,7 @@ public class PlayerController : Character
             CharacterController.Move(Velocity * Time.deltaTime);
         } else
         {
-            Velocity = Physics.gravity;
+            Velocity.y = -2f;
         }
     }
 
@@ -141,8 +144,34 @@ public class PlayerController : Character
 
     private void CheckGround()
     {
-        IsGrounded = Physics.CheckSphere(transform.position, 0.05f, GroundMask);
-        CanJump = Physics.CheckSphere(transform.position, 0.05f, JumpMask);
+        bool temp = false;
+
+        temp = Physics.CheckSphere(transform.position, 0.05f, GroundMask);
+
+        foreach (Transform trans in FeetPoints) {
+            if (Physics.CheckSphere(trans.position, 0.05f, GroundMask))
+            {
+                temp = true;
+                break;
+            }
+        }
+
+        IsGrounded = temp;
+
+        Debug.Log(IsGrounded);
+
+        temp = Physics.CheckSphere(transform.position, 0.05f, JumpMask);
+
+        foreach (Transform trans in FeetPoints)
+        {
+            if (Physics.CheckSphere(trans.position, 0.05f, JumpMask))
+            {
+                temp = true;
+                break;
+            }
+        }
+
+        CanJump = temp;
 
     }
 
