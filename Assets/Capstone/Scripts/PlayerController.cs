@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 
 [RequireComponent(typeof(CharacterController))]
-public class PlayerController : NetworkBehaviour
+public class PlayerController : Character
 {
     [Header("Player Controller")]
         [Tooltip("If the player can control their player character")]
@@ -38,12 +38,18 @@ public class PlayerController : NetworkBehaviour
     [Header("Character Animation")]
         public Animator CharacterAnimator;
 
-     [Header("Camera")]
+    [Header("Camera")]
         public GameObject Camera;
 
 
-    void Start()
+    new void Start()
     {
+
+        if (isServer)
+        {
+            base.Start();
+        }
+
         CharacterController = GetComponent<CharacterController>();
 
         if (hasAuthority)
