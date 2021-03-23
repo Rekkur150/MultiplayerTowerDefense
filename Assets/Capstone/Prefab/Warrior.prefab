@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7678837666902199145}
   - component: {fileID: 7221277426088222720}
   - component: {fileID: 585551790437920543}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Warrior
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  MaxHealth: 0
   CanPlayerControlCharacter: 1
   ClientEnableOnStart:
   - {fileID: 8823205487257409580}
