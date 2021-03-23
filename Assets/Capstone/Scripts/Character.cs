@@ -11,10 +11,10 @@ public class Character : ServerObject
     [SyncVar]
     private float Health;
 
+    [ServerCallback]
     protected void Start()
     {
-        if (isServer)
-            Health = MaxHealth;
+        Health = MaxHealth;
     }
 
     [Command(requiresAuthority = false)]
@@ -23,13 +23,13 @@ public class Character : ServerObject
         Health = health;
 
         if (Health <= 0)
-            CharacterDied();
+            Died();
     }
 
-    public void DamageCharacter(float health)
+    public void Damage(float health)
     {
         SetHealth(Health - health);
     }
 
-    protected virtual void CharacterDied() {}
+    protected virtual void Died() {}
 }

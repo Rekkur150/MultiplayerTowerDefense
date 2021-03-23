@@ -38,7 +38,7 @@ public class PlayerController : Character
     [Header("Character Animation")]
         public Animator CharacterAnimator;
 
-     [Header("Camera")]
+    [Header("Camera")]
         public GameObject Camera;
 
 
