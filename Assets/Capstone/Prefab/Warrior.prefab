@@ -288,10 +288,10 @@ MonoBehaviour:
   JumpHeight: 1
   GroundMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 16385
   JumpMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 16385
   FeetPoints:
   - {fileID: 683265455088564708}
   - {fileID: 3192142975831402826}

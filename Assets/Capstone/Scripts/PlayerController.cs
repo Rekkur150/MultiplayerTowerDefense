@@ -158,8 +158,6 @@ public class PlayerController : Character
 
         IsGrounded = temp;
 
-        Debug.Log(IsGrounded);
-
         temp = Physics.CheckSphere(transform.position, 0.05f, JumpMask);
 
         foreach (Transform trans in FeetPoints)

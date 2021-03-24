@@ -8,18 +8,18 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - JumpDisabled
   - Water
   - UI
   - 
   - Player
+  - PlayerBody
   - 
+  - Item
   - 
+  - Utility
   - 
-  - 
-  - 
-  - 
-  - 
+  - Tower
   - 
   - 
   - 

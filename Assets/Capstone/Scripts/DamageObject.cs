@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
+[RequireComponent(typeof(AreaFinder))]
 public class DamageObject : ServerObject
 {
     [Header("Damage Object")]
@@ -26,6 +27,17 @@ public class DamageObject : ServerObject
         public float InRate = 0;
         [Tooltip("Boolean to keep tract of InRate")]
         private bool CanInDamage = true;
+        private AreaFinder AreaFinder;
+
+    [ServerCallback]
+    void Start()
+    {
+        AreaFinder = GetComponent<AreaFinder>();
+        AreaFinder.TargetTag = TargetTag;
+
+        if (!TryGetComponent(out Collider collider))
+            Debug.LogError("There is no collider attached to this damage object", this);
+    }
 
     [ServerCallback]
     void OnTriggerEnter(Collider other)
@@ -46,11 +58,17 @@ public class DamageObject : ServerObject
     }
 
     [ServerCallback]
-    void OnTriggerStay(Collider other) //TODO Change this because there is a possible issue with this being only called on fixedupdate, so the rate may be too inconsistent, if is less than like 50ms, I would be fine with it
+    void FixedUpdate()
     {
-        if (InDamage != 0 && CanInDamage && other.tag == TargetTag && other.TryGetComponent(out Character character))
+        if (InDamage != 0 && CanInDamage)
         {
-            character.Damage(InDamage);
+            List<Character> temp = AreaFinder.GetCharacters();
+
+            foreach (Character character in temp)
+            {
+                character.Damage(InDamage);
+            }
+
             StartCoroutine("InDamageCooldown");
         }
     }
