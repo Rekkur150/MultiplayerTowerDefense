@@ -10,11 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8918766210931903301}
   - component: {fileID: 8957496794249156433}
+  - component: {fileID: 1623937674128801650}
+  - component: {fileID: 7678837666902199145}
   - component: {fileID: 7221277426088222720}
   - component: {fileID: 585551790437920543}
-  m_Layer: 0
+  - component: {fileID: 8382389979352546641}
+  m_Layer: 7
   m_Name: Warrior
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,6 +55,40 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 
   hasSpawned: 0
+--- !u!114 &1623937674128801650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
+--- !u!114 &7678837666902199145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  animator: {fileID: 9156539573382120683}
 --- !u!143 &7221277426088222720
 CharacterController:
   m_ObjectHideFlags: 0
@@ -63,13 +100,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.75
+  m_Height: 1.5
   m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.875, z: 0}
+  m_Center: {x: 0, y: 0.825, z: 0}
 --- !u!114 &585551790437920543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  MaxHealth: 50
   CanPlayerControlCharacter: 1
   ClientEnableOnStart:
   - {fileID: 8823205487257409580}
@@ -91,9 +129,32 @@ MonoBehaviour:
   - {fileID: 4106141804387832224}
   CharacterController: {fileID: 0}
   Forward: 5
-  Strafe: 2
+  Strafe: 5
+  JumpHeight: 1
+  GroundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  JumpMask:
+    serializedVersion: 2
+    m_Bits: 1
   CharacterAnimator: {fileID: 9156539573382120683}
   Camera: {fileID: 8823205487257409580}
+--- !u!54 &8382389979352546641
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8823205487257409580
 GameObject:
   m_ObjectHideFlags: 0
