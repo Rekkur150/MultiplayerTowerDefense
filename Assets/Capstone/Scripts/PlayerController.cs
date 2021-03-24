@@ -31,6 +31,8 @@ public class PlayerController : NetworkBehaviour
     [Header("Camera")]
     public GameObject Camera;
 
+    [System.NonSerialized]
+    public bool isReady;
 
     void Start()
     {
@@ -48,7 +50,7 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (hasAuthority)
         {
@@ -56,6 +58,7 @@ public class PlayerController : NetworkBehaviour
             {
                 MoveCharacter();
 
+                PlayerInput();
 
                 if (Cursor.lockState == CursorLockMode.Locked)
                 {
@@ -97,6 +100,21 @@ public class PlayerController : NetworkBehaviour
         foreach (GameObject obj in gameObjects)
         {
             obj.SetActive(isEnabled);
+        }
+    }
+
+    private void PlayerInput()
+    {
+        if (Input.GetKeyDown(KeyCode.X) && !isReady)
+        {
+            isReady = true;
+            WaveManager.singleton.ReadyPlayer();
+        }
+
+        if (Input.GetKeyDown(KeyCode.X) && isReady)
+        {
+            isReady = false;
+            WaveManager.singleton.UnreadyPlayer();
         }
     }
 }
