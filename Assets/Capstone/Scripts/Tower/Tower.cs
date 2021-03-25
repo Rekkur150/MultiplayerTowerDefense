@@ -15,10 +15,7 @@ public class Tower : Character
     [Tooltip("The delay between actions")]
     public float RateOfFire = Mathf.Infinity;
 
-    [SyncVar]
-    [HideInInspector]
-    public Character nextTarget;
-    private bool CanAttack = true;
+    protected bool CanAttack = true;
 
     [ServerCallback]
     protected new void Start()
@@ -31,40 +28,12 @@ public class Tower : Character
     }
 
     [ServerCallback]
-    protected void FixedUpdate()
-    {
-
-        if (!IsTowerFunctional)
-            return;
-
-        FindNextTarget();
-
-        if (nextTarget != null && CanAttack)
-            AttemptAttack();
-    }
-
-    protected void FindNextTarget()
-    {
-        nextTarget = AreaFinder.GetClosestTargetInSight(transform.position);
-    }
-
-    [ServerCallback]
-    private void AttemptAttack()
-    {
-        CanAttack = false;
-        LaunchAttack(nextTarget);
-        StartCoroutine("RateOfFireDelay");
-    }
-
-    [ServerCallback]
-    private IEnumerator RateOfFireDelay()
+    protected IEnumerator RateOfFireDelay()
     {
         yield return new WaitForSeconds(RateOfFire);
         CanAttack = true;
     }
 
-    [ServerCallback]
-    protected virtual void LaunchAttack(Character target) {}
 
 
 

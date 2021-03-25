@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Tower))]
+[RequireComponent(typeof(ProjectileTower))]
 public class TrackingTower : MonoBehaviour
 {
     [Header("Tracking Tower")]
@@ -13,11 +13,11 @@ public class TrackingTower : MonoBehaviour
     [Tooltip("This is the vertically rotated object")]
     public Transform Barrel;
 
-    private Tower Tower;
+    private ProjectileTower ProjectileTower;
 
     void Start()
     {
-        Tower = GetComponent<Tower>();
+        ProjectileTower = GetComponent<ProjectileTower>();
 
         if (Barrel.parent != Turret)
             Barrel.parent = Turret;
@@ -26,13 +26,13 @@ public class TrackingTower : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (Tower.nextTarget == null)
+        if (ProjectileTower.Target == null)
             return;
 
-        Vector3 tempPosition = Tower.nextTarget.gameObject.transform.position;
+        Vector3 tempPosition = ProjectileTower.PredictedTargetLocation;
         tempPosition.y = Turret.position.y;
         Turret.LookAt(tempPosition);
 
-        Barrel.LookAt(Tower.nextTarget.gameObject.transform.position + new Vector3(0,1,0));
+        Barrel.LookAt(ProjectileTower.PredictedTargetLocation);
     }
 }

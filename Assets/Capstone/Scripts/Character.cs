@@ -11,9 +11,17 @@ public class Character : ServerObject
     [SyncVar]
     private float Health;
 
+    [Tooltip("Used for aiming purposes")]
+    public Transform CharacterCenter;
+    [Tooltip("Used for accurate aiming")]
+    protected Vector3 Velocity;
+
     [ServerCallback]
     protected void Start()
     {
+        if (CharacterCenter == null)
+            CharacterCenter = transform;
+
         Health = MaxHealth;
     }
 
@@ -29,6 +37,17 @@ public class Character : ServerObject
     public void Damage(float health)
     {
         SetHealth(Health - health);
+    }
+
+    [Command]
+    public void SetVelocity(Vector3 velocity)
+    {
+        Velocity = velocity;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return Velocity;
     }
 
     protected virtual void Died() {}

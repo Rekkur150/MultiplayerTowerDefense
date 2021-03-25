@@ -7,11 +7,11 @@ public class ServerObject : NetworkBehaviour
 {
     public string UniqueName { get; }
 
-    public void ServerDestory()
+    public void ServerDestroy()
     {
-        OnObjectDestory();
+        OnObjectDestroy();
         NetworkServer.Destroy(gameObject);
     }
 
-    protected virtual void OnObjectDestory() {}
+    protected virtual void OnObjectDestroy() {}
 }

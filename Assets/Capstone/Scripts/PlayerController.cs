@@ -6,11 +6,12 @@ using Mirror;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : Character
 {
-    [Header("Player Controller")]
+   
         [Tooltip("If the player can control their player character")]
         [HideInInspector]
         public bool CanPlayerControlCharacter = true;
 
+    [Header("Player Controller")]
         [Tooltip("A collection of local gameobjects to set to enable on start")]
         public List<GameObject> ClientEnableOnStart = new List<GameObject>();
         [Tooltip("A collection of local gameobjects to set to disable on start ")]
@@ -34,7 +35,7 @@ public class PlayerController : Character
         public List<Transform> FeetPoints;
 
         //Private
-        private Vector3 Velocity;
+        private Vector3 GravityVelocity;
         private bool IsGrounded;
         private bool CanJump;
 
@@ -88,6 +89,15 @@ public class PlayerController : Character
         }
     }
 
+    [ClientCallback]
+    void FixedUpdate()
+    {
+        if (hasAuthority)
+        {
+            SetVelocity(CharacterController.velocity);
+        }   
+    }
+
     private void MoveCharacter()
     {
         float Horizontal = Input.GetAxis("Horizontal");
@@ -109,13 +119,13 @@ public class PlayerController : Character
 
     private void ApplyCharacterGravity()
     {
-        if (!(IsGrounded && Velocity.y < 0))
+        if (!(IsGrounded && GravityVelocity.y < 0))
         {
-            Velocity += Physics.gravity * Time.deltaTime;
-            CharacterController.Move(Velocity * Time.deltaTime);
+            GravityVelocity += Physics.gravity * Time.deltaTime;
+            CharacterController.Move(GravityVelocity * Time.deltaTime);
         } else
         {
-            Velocity.y = -2f;
+            GravityVelocity.y = -2f;
         }
     }
 
@@ -137,8 +147,8 @@ public class PlayerController : Character
     {
         if (CanJump)
         {
-            Velocity.y = Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y); //TODO: Store this into a variable because this is computationally costly
-            CharacterController.Move(Velocity * Time.deltaTime);
+            GravityVelocity.y = Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y); //TODO: Store this into a variable because this is computationally costly
+            CharacterController.Move(GravityVelocity * Time.deltaTime);
         }
     }
 
