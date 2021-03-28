@@ -58,6 +58,8 @@ public class PlayerController : Character
 
         if (hasAuthority)
         {
+            ClientPlayerManager.singleton.PlayerCharacter = this;
+
             ObjectActivationHelper(true, ClientEnableOnStart);
             ObjectActivationHelper(false, ClientDisableOnStart);
 
@@ -68,7 +70,13 @@ public class PlayerController : Character
         }
     }
 
-    void Update()
+    private void OnEnable()
+    {
+        if (hasAuthority)
+            ClientPlayerManager.singleton.PlayerCharacter = this;
+    }
+
+    protected void Update()
     {
         if (hasAuthority)
         {
@@ -90,7 +98,7 @@ public class PlayerController : Character
     }
 
     [ClientCallback]
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (hasAuthority)
         {
@@ -98,7 +106,7 @@ public class PlayerController : Character
         }   
     }
 
-    private void MoveCharacter()
+    protected void MoveCharacter()
     {
         float Horizontal = Input.GetAxis("Horizontal");
         float Vertical = Input.GetAxis("Vertical");
@@ -117,7 +125,7 @@ public class PlayerController : Character
 
     }
 
-    private void ApplyCharacterGravity()
+    protected void ApplyCharacterGravity()
     {
         if (!(IsGrounded && GravityVelocity.y < 0))
         {
@@ -129,12 +137,12 @@ public class PlayerController : Character
         }
     }
 
-    private void RotateCharacter()
+    protected void RotateCharacter()
     {
         transform.Rotate(Vector3.up * Input.GetAxis("Mouse X"));
     }
 
-    private void RotateCameraVertically()
+    protected void RotateCameraVertically()
     {
         float xRotation = Camera.transform.localRotation.eulerAngles.x;
 
@@ -143,7 +151,7 @@ public class PlayerController : Character
         Camera.transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 
-    private void Jump()
+    protected void Jump()
     {
         if (CanJump)
         {
@@ -152,7 +160,7 @@ public class PlayerController : Character
         }
     }
 
-    private void CheckGround()
+    protected void CheckGround()
     {
         bool temp = false;
 
@@ -189,5 +197,10 @@ public class PlayerController : Character
         {
             obj.SetActive(isEnabled);
         }
+    }
+
+    protected override void Died()
+    {
+        ClientPlayerManager.singleton.ClientCharacterDied(gameObject);
     }
 }

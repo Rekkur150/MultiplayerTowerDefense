@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -584,7 +584,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d42a33b828bbae348a9e6beeb153aab4, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d42a33b828bbae348a9e6beeb153aab4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -645,6 +645,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2083659342}
+  - component: {fileID: 2083659343}
+  - component: {fileID: 2083659344}
   m_Layer: 0
   m_Name: ClientPlayerManager
   m_TagString: Untagged
@@ -666,6 +668,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2083659343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083659341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294506965016a494d8588afa9fc50208, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  PlayerCharacter: {fileID: 0}
+  PlayerDeathPrefab: {fileID: 8567263292401659181, guid: b375235113647dc4790d1a1f15beae20, type: 3}
+  RespawnTime: 10
+--- !u!114 &2083659344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083659341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 2319393571
+  serverOnly: 0
+  visible: 0
+  m_AssetId: 
+  hasSpawned: 0
 --- !u!1001 &372990248666821241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -742,6 +778,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 578265262760773408, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1139978828924510106, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
+      propertyPath: RateOfFire
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2534448084283516156, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
       propertyPath: m_RootOrder
       value: 2

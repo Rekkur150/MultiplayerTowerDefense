@@ -56,5 +56,6 @@ public class Character : ServerObject
         return Velocity;
     }
 
+    [ServerCallback]
     protected virtual void Died() {}
 }

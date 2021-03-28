@@ -32,12 +32,16 @@ public class AreaFinder : MonoBehaviour
     protected void FixedUpdate()
     {
         TargetCharacters.RemoveAll(item => item == null);
+        TargetCharacters.RemoveAll(item => item.gameObject.activeInHierarchy == false);
     }
 
     protected void OnTriggerEnter(Collider other)
     {
         if (other.tag == TargetTag && other.TryGetComponent(out Character character))
         {
+            if (TargetCharacters.Contains(character))
+                return;
+
             TargetCharacters.Add(character);
         }
     }
@@ -46,6 +50,7 @@ public class AreaFinder : MonoBehaviour
     {
         if (other.tag == TargetTag && other.TryGetComponent(out Character character))
         {
+            Debug.Log("Removed Character");
             TargetCharacters.Remove(character);
         }
     }
