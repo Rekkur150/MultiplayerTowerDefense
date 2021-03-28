@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror; //For NetworkBehaviour
 
-public class AreaFinder : NetworkBehaviour
+public class AreaFinder : MonoBehaviour
 {
     [Header("Area Finder")]
 
@@ -16,11 +16,8 @@ public class AreaFinder : NetworkBehaviour
     [Tooltip("The list of target characters in the collider")]
     private List<Character> TargetCharacters = new List<Character>();
 
-    [ServerCallback]
-    void Start()
+    protected void Start()
     {
-        netIdentity.serverOnly = true;
-        netIdentity.visible = Visibility.ForceHidden;
 
         if (CantSeeMask.value == 0)
             CantSeeMask = LayerMask.GetMask("Default", "JumpDisabled");
@@ -32,14 +29,12 @@ public class AreaFinder : NetworkBehaviour
         gameObject.layer = LayerMask.NameToLayer("Utility");
     }
 
-    [ServerCallback]
-    void FixedUpdate()
+    protected void FixedUpdate()
     {
         TargetCharacters.RemoveAll(item => item == null);
     }
 
-    [ServerCallback]
-    void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if (other.tag == TargetTag && other.TryGetComponent(out Character character))
         {
@@ -47,8 +42,7 @@ public class AreaFinder : NetworkBehaviour
         }
     }
 
-    [ServerCallback]
-    void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.tag == TargetTag && other.TryGetComponent(out Character character))
         {
@@ -56,13 +50,15 @@ public class AreaFinder : NetworkBehaviour
         }
     }
 
-    [ServerCallback]
     public List<Character> GetCharacters()
     {
         return TargetCharacters;
     }
+    public int GetCharacterCount()
+    {
+        return TargetCharacters.Count;
+    }
 
-    [ServerCallback]
     public bool HasTargets()
     {
         if (TargetCharacters.Count > 0)
@@ -71,7 +67,6 @@ public class AreaFinder : NetworkBehaviour
         return false;
     }
 
-    [ServerCallback]
     public bool IsStillTarget(Character target)
     {
         if (TargetCharacters.Contains(target))
@@ -80,19 +75,16 @@ public class AreaFinder : NetworkBehaviour
         return false;
     }
 
-    [ServerCallback]
     public Character GetClosestTarget(Vector3 position)
     {
         return GetClosestTargetHelper(position, false);
     }
 
-    [ServerCallback]
     public Character GetClosestTargetInSight(Vector3 position)
     {
         return GetClosestTargetHelper(position, true);
     }
 
-    [ServerCallback]
     private Character GetClosestTargetHelper(Vector3 position, bool NeedLineOfSight)
     {
         float distance = Mathf.Infinity;

@@ -6,6 +6,7 @@ using Mirror;
 public class Character : ServerObject
 {
     [Header("Character Properties")]
+    [SyncVar]
     public float MaxHealth;
 
     [SyncVar]
@@ -32,6 +33,11 @@ public class Character : ServerObject
 
         if (Health <= 0)
             Died();
+    }
+
+    public float GetHealth()
+    {
+        return Health;
     }
 
     public void Damage(float health)

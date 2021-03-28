@@ -33,6 +33,7 @@ Transform:
   - {fileID: 194767621602087607}
   - {fileID: 3657088659824291431}
   - {fileID: 6033286689996532411}
+  - {fileID: 578265262760773409}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -69,7 +70,7 @@ MonoBehaviour:
   syncInterval: 0.1
   MaxHealth: 50
   CharacterCenter: {fileID: 0}
-  AreaFinder: {fileID: 1280981597304336649}
+  AreaFinder: {fileID: 5530648143629440707}
   IsTowerFunctional: 1
   RateOfFire: 5
   Projectile: {fileID: 8934214757459350803, guid: 6e271d7270e1053428d141edab8166e4, type: 3}
@@ -374,8 +375,7 @@ GameObject:
   m_Component:
   - component: {fileID: 194767621602087607}
   - component: {fileID: 1666577283111578651}
-  - component: {fileID: 7420408704652741547}
-  - component: {fileID: 1280981597304336649}
+  - component: {fileID: 5530648143629440707}
   m_Layer: 14
   m_Name: AreaFinder
   m_TagString: Untagged
@@ -410,24 +410,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7420408704652741547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8617771825898245419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b91ecbcc199f4492b9a91e820070131, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneId: 0
-  serverOnly: 1
-  visible: 1
-  m_AssetId: 
-  hasSpawned: 0
---- !u!114 &1280981597304336649
+--- !u!114 &5530648143629440707
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -439,9 +422,65 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bac8db817269149828322170499979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
   TargetTag: Player
   CantSeeMask:
     serializedVersion: 2
     m_Bits: 9
+--- !u!1001 &6454262076271682097
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2534448084283516156}
+    m_Modifications:
+    - target: {fileID: 212399919701649330, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: Character
+      value: 
+      objectReference: {fileID: 1139978828924510106}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785428, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_Name
+      value: CharacterCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785430, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+--- !u!224 &578265262760773409 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+  m_PrefabInstance: {fileID: 6454262076271682097}
+  m_PrefabAsset: {fileID: 0}
