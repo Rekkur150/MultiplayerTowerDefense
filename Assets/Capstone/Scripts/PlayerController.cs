@@ -58,7 +58,10 @@ public class PlayerController : Character
 
         if (hasAuthority)
         {
-            ClientPlayerManager.singleton.PlayerCharacter = this;
+            if (ClientPlayerManager.singleton == null)
+                StartCoroutine("WaitForClientPlayerManager");
+            else 
+                ClientPlayerManager.singleton.PlayerCharacter = this;
 
             ObjectActivationHelper(true, ClientEnableOnStart);
             ObjectActivationHelper(false, ClientDisableOnStart);
@@ -202,5 +205,18 @@ public class PlayerController : Character
     protected override void Died()
     {
         ClientPlayerManager.singleton.ClientCharacterDied(gameObject);
+    }
+
+    private IEnumerator WaitForClientPlayerManager()
+    {
+        while (true)
+        {
+            if (ClientPlayerManager.singleton != null)
+            {
+                ClientPlayerManager.singleton.PlayerCharacter = this;
+                break;
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 }

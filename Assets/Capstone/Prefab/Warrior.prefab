@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 7221277426088222720}
   - component: {fileID: 585551790437920543}
   - component: {fileID: 8382389979352546641}
+  - component: {fileID: 1293948781308522274}
   m_Layer: 7
   m_Name: Warrior
   m_TagString: Player
@@ -351,6 +352,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1293948781308522274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b5fbcb0a7e2b348a5a4ae8dbfaba6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  CanPlaceTower: 1
+  IsPlacingTower: 0
+  temp: {fileID: 2911572444828614214, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
+  PlayerInteractMask:
+    serializedVersion: 2
+    m_Bits: 9
+  TowerCollisionCheckMask:
+    serializedVersion: 2
+    m_Bits: 16521
+  TowerFloorCheckMask:
+    serializedVersion: 2
+    m_Bits: 9
+  SpawnableTowers:
+  - {fileID: 2911572444828614214, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
 --- !u!1 &8823205487257409580
 GameObject:
   m_ObjectHideFlags: 0

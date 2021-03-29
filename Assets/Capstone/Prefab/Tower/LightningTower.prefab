@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 372990247940588771}
   - component: {fileID: 372990247940588782}
   - component: {fileID: 372990247940588768}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 372990248707007810}
   - component: {fileID: 372990248707007811}
   - component: {fileID: 372990248707007808}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lightning (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -339,7 +339,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 372990249138043794}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 372990249675297557}
   - component: {fileID: 372990249675297554}
   - component: {fileID: 372990249675297555}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lightning (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 372990249703957220}
   - component: {fileID: 372990249703957221}
   - component: {fileID: 372990249703957218}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Lightning (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -703,10 +703,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 191290673962805133}
+  - component: {fileID: 3374765695034559246}
   - component: {fileID: 919132147622465359}
   - component: {fileID: 919132147622465360}
   - component: {fileID: 919132147622465361}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningTower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -732,6 +733,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3374765695034559246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715027212618022199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 1
+  localPositionSensitivity: 0.01
+  localRotationSensitivity: 0.01
+  localScaleSensitivity: 0.01
 --- !u!114 &919132147622465359
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,7 +768,8 @@ MonoBehaviour:
   MaxHealth: 50
   CharacterCenter: {fileID: 0}
   AreaFinder: {fileID: 4445336700310490450}
-  IsTowerFunctional: 1
+  GameObjectDisableOnTowerNonFunctional: []
+  BehavioursDisableOnTowerNonFunctional: []
   RateOfFire: 0.25
   DamagePerAttack: 0.25
 --- !u!114 &919132147622465360
@@ -792,13 +812,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4053370023553537771}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: LightningStartPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4053370023553537771
 Transform:
   m_ObjectHideFlags: 0
@@ -918,6 +938,18 @@ PrefabInstance:
       propertyPath: Character
       value: 
       objectReference: {fileID: 919132147622465359}
+    - target: {fileID: 4936339254405284678, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407082948121674, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407082973510784, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -954,9 +986,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5878407083140785428, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 5878407083140785430, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5878407083284097537, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
@@ -1016,22 +1056,68 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7350756371811728369, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -6888668837316257963, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -6740318152158470058, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -6338493447810395401, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -5406821627427377328, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -4919627500083593230, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -2566998683784097523, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 539479737382674278, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
       propertyPath: m_Name
       value: LightningTower
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1126889739504276362, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4511462594081177303, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7287795617821506075, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8303869296869961805, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512458989129463979, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
---- !u!4 &4919939644634413552 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8070698510402927826, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
-  m_PrefabInstance: {fileID: 5456178556258450142}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &983962158472182723 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5052899296753107229, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
-  m_PrefabInstance: {fileID: 5456178556258450142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5821693717432141111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7245461762470182935, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
@@ -1060,5 +1146,15 @@ Transform:
 --- !u!4 &9076689096526496725 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3913309053328881931, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+  m_PrefabInstance: {fileID: 5456178556258450142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4919939644634413552 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8070698510402927826, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+  m_PrefabInstance: {fileID: 5456178556258450142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &983962158472182723 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5052899296753107229, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
   m_PrefabInstance: {fileID: 5456178556258450142}
   m_PrefabAsset: {fileID: 0}

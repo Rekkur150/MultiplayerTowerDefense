@@ -355,6 +355,8 @@ MonoBehaviour:
   playerSpawnMethod: 0
   spawnPrefabs:
   - {fileID: 8934214757459350803, guid: 6e271d7270e1053428d141edab8166e4, type: 3}
+  - {fileID: 8567263292401659181, guid: b375235113647dc4790d1a1f15beae20, type: 3}
+  - {fileID: 2911572444828614214, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
 --- !u!4 &743072268
 Transform:
   m_ObjectHideFlags: 0
@@ -369,6 +371,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &809575881 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 844127700349848164, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+  m_PrefabInstance: {fileID: 372990248666821241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1053364008 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 372990247940588768, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+  m_PrefabInstance: {fileID: 372990248666821241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1053364010 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 372990247940588771, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+  m_PrefabInstance: {fileID: 372990248666821241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2383129493b1d479206cface1515bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1057214434
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +555,17 @@ MonoBehaviour:
   CantSeeMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!114 &1138587050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 919132147622465361, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+  m_PrefabInstance: {fileID: 372990248666821241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3759f0e0f25d95447ac1249fb13ae55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1693895146 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 372990249138043795, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
@@ -556,6 +590,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &1726798505 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 372990249703957218, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+  m_PrefabInstance: {fileID: 372990248666821241}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1726798507 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 372990249703957220, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+  m_PrefabInstance: {fileID: 372990248666821241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d2383129493b1d479206cface1515bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1850591585 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d42a33b828bbae348a9e6beeb153aab4, type: 3}
@@ -761,6 +811,62 @@ PrefabInstance:
       propertyPath: m_Avatar
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: IsTowerFunctional
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.data[0]
+      value: 
+      objectReference: {fileID: 809575881}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.data[1]
+      value: 
+      objectReference: {fileID: 1138587050}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.data[2]
+      value: 
+      objectReference: {fileID: 1693895147}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.data[3]
+      value: 
+      objectReference: {fileID: 1053364010}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.data[4]
+      value: 
+      objectReference: {fileID: 1053364008}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.data[5]
+      value: 
+      objectReference: {fileID: 1726798507}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: DisableOnTowerNonFunctional.Array.data[6]
+      value: 
+      objectReference: {fileID: 1726798505}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: BehavioursDisableOnTowerNonFunctional.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: GameObjectDisableOnTowerNonFunctional.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: BehavioursDisableOnTowerNonFunctional.Array.data[0]
+      value: 
+      objectReference: {fileID: 1138587050}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: BehavioursDisableOnTowerNonFunctional.Array.data[1]
+      value: 
+      objectReference: {fileID: 809575881}
+    - target: {fileID: 919132147622465359, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+      propertyPath: GameObjectDisableOnTowerNonFunctional.Array.data[0]
+      value: 
+      objectReference: {fileID: 1693895146}
     - target: {fileID: 919132147622465360, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
       propertyPath: sceneId
       value: 1529369631
@@ -830,6 +936,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2906311763120984355, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 608dc9fdbeee1ca44baf32c6cc00405b, type: 2}
     - target: {fileID: 2911572444828614214, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
       propertyPath: m_Name
       value: ArrowTower

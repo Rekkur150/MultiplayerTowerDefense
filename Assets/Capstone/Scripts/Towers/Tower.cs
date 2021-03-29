@@ -9,21 +9,30 @@ public class Tower : Character
     [Tooltip("Needed in order for the tower to find prey")]
     public AreaFinder AreaFinder;
 
+    [SyncVar (hook = nameof(TowerEnabledChanged))]
     [Tooltip("Disables the tower, if need be")]
-    public bool IsTowerFunctional = true;
+    protected bool IsTowerFunctional = true;
+
+    public List<GameObject> GameObjectDisableOnTowerNonFunctional = new List<GameObject>();
+    public List<Behaviour> BehavioursDisableOnTowerNonFunctional = new List<Behaviour>();
 
     [Tooltip("The delay between actions")]
     public float RateOfFire = Mathf.Infinity;
 
     protected bool CanAttack = true;
 
-    [ServerCallback]
     protected new void Start()
     {
         base.Start();
 
-        if (AreaFinder == null)
-            Debug.LogError("There is no area finder in this tower!", this);
+        if (isServer)
+        {
+            if (AreaFinder == null)
+                Debug.LogError("There is no area finder in this tower!", this);
+        }
+
+        if (!IsTowerFunctional)
+            SetDisabledObjectActive(false);
 
     }
 
@@ -34,8 +43,37 @@ public class Tower : Character
         CanAttack = true;
     }
 
+    public void SetTowerEnabled(bool isEnabled)
+    {
+        if (isEnabled)
+        {
+            IsTowerFunctional = true;
+            SetDisabledObjectActive(true);
+        } else
+        {
+            IsTowerFunctional = false;
+            SetDisabledObjectActive(false);
+        }
+    }
+
+    protected void TowerEnabledChanged(bool oldFunction, bool newFunction)
+    {
+        SetTowerEnabled(newFunction);
+    }
 
 
+    private void SetDisabledObjectActive(bool isEnabled)
+    {
+        foreach (Behaviour behaviour in BehavioursDisableOnTowerNonFunctional)
+        {
+            behaviour.enabled = isEnabled;
+        }
+
+        foreach (GameObject gameObj in GameObjectDisableOnTowerNonFunctional)
+        {
+            gameObj.SetActive(isEnabled);
+        }
+    }
 
 
 
