@@ -6,18 +6,20 @@ using Mirror;
 public class WaveManager : NetworkBehaviour
 {
     [System.Serializable]
-    public class Wave
+    public struct Wave
     {
         public int enemyCount;
-        public EnemyController enemy;
     }
 
     public Wave[] waves;
 
     public static WaveManager singleton;
 
+    [Tooltip("Enemy prefab for default enemy.")]
+    public GameObject enemy;
+
     [Tooltip("Array of all potential enemy spawn points on the map.")]
-    public Transform[] enemySpawns;
+    public GameObject[] enemySpawns;
 
     [SyncVar]
     [Tooltip("Current Wave the players are on.")]
@@ -38,7 +40,8 @@ public class WaveManager : NetworkBehaviour
     [Tooltip("The number of players connected")]
     public int numberOfReadyPlayers;
 
-    public NetworkManagerTD networkManager;
+    [Tooltip("The enemies for the current wave will be stored here for when we need to spawn them")]
+    private List<GameObject> currentWaveEnemies = new List<GameObject>();
 
     private void Start()
     {
@@ -57,7 +60,7 @@ public class WaveManager : NetworkBehaviour
         
     }
 
-    [Command]
+    [Command(requiresAuthority = false)]
     public void ReadyPlayer()
     {
         numberOfReadyPlayers++;
@@ -73,13 +76,56 @@ public class WaveManager : NetworkBehaviour
 
     public void CheckIfReady()
     {
-        if (numberOfReadyPlayers >= networkManager.players.Count)
+        if (numberOfReadyPlayers >= NetworkManagerTD.singleton.numPlayers)
         {
             Debug.Log("Starting wave");
+            StartWave(currentWave);
         }
         else
         {
-            Debug.Log(numberOfReadyPlayers + " ready out of " + networkManager.players.Count + " Players");
+            Debug.Log(numberOfReadyPlayers + " ready out of " + NetworkManagerTD.singleton.numPlayers + " Players");
         }
+    }
+
+    [ServerCallback]
+    private void StartWave(int waveNumber)
+    {
+        for (int i = 0; i < waves[waveNumber].enemyCount; i++)
+        {
+            currentWaveEnemies.Add(enemy);
+        }
+
+        isWaveActive = true;
+
+        StartCoroutine(SpawnEnemies());
+    }
+
+    IEnumerator SpawnEnemies()
+    {
+        while (currentWaveEnemies.Count > 0)
+        {
+            // Index for random element in currentWaveEnemies list.
+            int index = Random.Range(0, currentWaveEnemies.Count);
+
+            GameObject spawn = enemySpawns[Random.Range(0, enemySpawns.Length)];
+            GameObject childObject = Instantiate(currentWaveEnemies[index]);
+
+            // Spawn the enemy at one of the available spawn points.
+            NetworkServer.Spawn(childObject);
+            Debug.Log(enemySpawns[Random.Range(0, enemySpawns.Length)].transform);
+
+            ChangeObjectParent(childObject, spawn);
+
+            // Remove enemy from list.
+            currentWaveEnemies.RemoveAt(index);
+
+            yield return new WaitForSeconds(2f);
+        }
+    }
+    
+    [ClientRpc]
+    private void ChangeObjectParent(GameObject childObject, GameObject parent)
+    {
+        childObject.transform.parent = parent.transform;
     }
 }

@@ -160,16 +160,18 @@ public class PlayerController : Character
 
     private void PlayerInput()
     {
-        if (Input.GetKeyDown(KeyCode.X) && !isReady)
+        if (Input.GetKeyDown(KeyCode.X))
         {
-            isReady = true;
-            WaveManager.singleton.ReadyPlayer();
-        }
-
-        if (Input.GetKeyDown(KeyCode.X) && isReady)
-        {
-            isReady = false;
-            WaveManager.singleton.UnreadyPlayer();
+            if (!isReady)
+            {
+                isReady = true;
+                WaveManager.singleton.ReadyPlayer();
+            }
+            else
+            {
+                isReady = false;
+                WaveManager.singleton.UnreadyPlayer();
+            }
         }
     }
 }

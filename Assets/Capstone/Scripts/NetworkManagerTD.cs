@@ -5,15 +5,15 @@ using Mirror;
 
 public class NetworkManagerTD : NetworkManager
 {
-    public List<PlayerController> players { get; } = new List<PlayerController>();
+    //public List<PlayerController> Players { get; } = new List<PlayerController>();
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
         base.OnServerAddPlayer(conn);
 
-        var player = conn.identity.GetComponent<PlayerController>();
+        //var player = conn.identity.GetComponent<PlayerController>();
 
-        players.Add(player);
+        //Players.Add(player);
     }
 
     public override void OnServerDisconnect(NetworkConnection conn)
@@ -25,7 +25,7 @@ public class NetworkManagerTD : NetworkManager
             player.isReady = false;
         }
 
-        players.Remove(player);
+        //Players.Remove(player);
 
         base.OnServerDisconnect(conn);
     }
