@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InitalMaxValue: 50
   Slider: {fileID: 5878407082948121653}
+  StartAtZero: 0
 --- !u!1 &5878407082948121674
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &5878407083140785431
 MonoBehaviour:
   m_ObjectHideFlags: 0

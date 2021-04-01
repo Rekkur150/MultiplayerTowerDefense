@@ -20,9 +20,9 @@ public class ProjectileTower : Tower
     private float ProjectileSpeed;
 
     [ServerCallback]
-    private new void Start()
+    private new void Awake()
     {
-        base.Start();
+        base.Awake();
 
         if (Projectile.TryGetComponent(out Projectile projectile))
             ProjectileSpeed = projectile.Speed;

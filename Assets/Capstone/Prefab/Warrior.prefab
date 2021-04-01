@@ -197,9 +197,14 @@ GameObject:
   - component: {fileID: 1623937674128801650}
   - component: {fileID: 7678837666902199145}
   - component: {fileID: 7221277426088222720}
-  - component: {fileID: 585551790437920543}
   - component: {fileID: 8382389979352546641}
+  - component: {fileID: 585551790437920543}
   - component: {fileID: 1293948781308522274}
+  - component: {fileID: 1561058589907593161}
+  - component: {fileID: 7270925146916596544}
+  - component: {fileID: 1163160705947051240}
+  - component: {fileID: 69111573440311832}
+  - component: {fileID: 2482590295083338395}
   m_Layer: 7
   m_Name: Warrior
   m_TagString: Player
@@ -296,6 +301,22 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.825, z: 0}
+--- !u!54 &8382389979352546641
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!114 &585551790437920543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,22 +357,6 @@ MonoBehaviour:
   - {fileID: 5095764906659374008}
   CharacterAnimator: {fileID: 9156539573382120683}
   Camera: {fileID: 8823205487257409580}
---- !u!54 &8382389979352546641
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8110422392308371967}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &1293948781308522274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,20 +371,101 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  CanPlaceTower: 1
-  IsPlacingTower: 0
-  temp: {fileID: 2911572444828614214, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
+  playerInterface: {fileID: 0}
   PlayerInteractMask:
-    serializedVersion: 2
-    m_Bits: 9
-  TowerCollisionCheckMask:
-    serializedVersion: 2
-    m_Bits: 16521
-  TowerFloorCheckMask:
     serializedVersion: 2
     m_Bits: 9
   SpawnableTowers:
   - {fileID: 2911572444828614214, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
+  - {fileID: 715027212618022199, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+--- !u!114 &1561058589907593161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84bd097d61c5c334490c411e56b47144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  playerController: {fileID: 585551790437920543}
+  towerPlacer: {fileID: 1293948781308522274}
+  towerPlacerController: {fileID: 7270925146916596544}
+  selectTowerController: {fileID: 0}
+  playerTowerInteraction: {fileID: 0}
+--- !u!114 &7270925146916596544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c1baa99c2e0c724680b2be4d233b114, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  towerPlacer: {fileID: 1293948781308522274}
+  TowerErrorText: {fileID: 3313563499624513261}
+  BuildingProgressSlider: {fileID: 2837743911807997471}
+--- !u!114 &1163160705947051240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08f5103a120e1a5419d2f35a20e15e14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  TowerSelectionMask:
+    serializedVersion: 2
+    m_Bits: 16384
+  currentTower: {fileID: 0}
+  HighlightMaterial: {fileID: 2100000, guid: 51d3e7c3162278c4686df2180922bf8c, type: 2}
+--- !u!114 &69111573440311832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1cca34964045334aa7e6dcd1a5fd14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  playerInterface: {fileID: 1561058589907593161}
+  playerTowerInteraction: {fileID: 0}
+--- !u!114 &2482590295083338395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94fb4c3c581b7b40beda339fb522fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  DeleteMaterial: {fileID: 2100000, guid: b12be874fd753f345b90860fff03bc5e, type: 2}
+  UpgradeMaterial: {fileID: 2100000, guid: c39e0ec3b95ca3f488a0ae4f4ddb5ade, type: 2}
+  selectTowerController: {fileID: 1163160705947051240}
 --- !u!1 &8823205487257409580
 GameObject:
   m_ObjectHideFlags: 0
@@ -778,6 +864,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5504413946570602325, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: StartAtZero
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5504413946570602325, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: InitalMaxValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -790,6 +884,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 7545267327747817428, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8022095715614556511, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
       propertyPath: Character
       value: 
@@ -801,6 +899,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4337776842380395513, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
   m_PrefabInstance: {fileID: 7710772102153642314}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3313563499624513261 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5115541817387753383, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+  m_PrefabInstance: {fileID: 7710772102153642314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2837743911807997471 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5504413946570602325, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+  m_PrefabInstance: {fileID: 7710772102153642314}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1019d88d0cfb75c479a93cdd51834dcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &6282745031621337783 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4337776842380395517, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}

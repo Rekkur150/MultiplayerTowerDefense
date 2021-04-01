@@ -15,9 +15,8 @@ public class CapsuleColliderChecker : ColliderChecker
 
         foreach (CapsuleCollider capCol in CapsuleColliders)
         {
-            Debug.DrawLine(capCol.center + (transform.up * (capCol.height / 2)), capCol.center - (transform.up * (capCol.height / 2)), Color.red);
 
-            if (Physics.CheckCapsule(capCol.center + (transform.up * ((capCol.height / 2) - capCol.radius)), capCol.center - (transform.up * ((capCol.height / 2) - capCol.radius)), capCol.radius, layerMask))
+            if (Physics.CheckCapsule(capCol.transform.position + capCol.center + (transform.up * ((capCol.height / 2) - capCol.radius)), capCol.transform.position + capCol.center - (transform.up * ((capCol.height / 2) - capCol.radius)), capCol.radius, layerMask))
                 Collided = true;
         }
 

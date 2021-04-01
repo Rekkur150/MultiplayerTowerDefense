@@ -18,7 +18,7 @@ public class Character : ServerObject
     protected Vector3 Velocity;
 
     [ServerCallback]
-    protected void Start()
+    protected void Awake()
     {
         if (CharacterCenter == null)
             CharacterCenter = transform;

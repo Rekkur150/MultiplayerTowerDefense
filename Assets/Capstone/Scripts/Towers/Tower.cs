@@ -6,6 +6,9 @@ using Mirror;
 public class Tower : Character
 {
     [Header("Tower")]
+    [Tooltip("The time in seconds it will take to build a tower")]
+    public float BuildTime;
+
     [Tooltip("Needed in order for the tower to find prey")]
     public AreaFinder AreaFinder;
 
@@ -21,14 +24,17 @@ public class Tower : Character
 
     protected bool CanAttack = true;
 
-    protected new void Start()
+    protected new void Awake()
     {
-        base.Start();
+        base.Awake();
 
         if (isServer)
         {
             if (AreaFinder == null)
                 Debug.LogError("There is no area finder in this tower!", this);
+
+            SetTowerEnabled(false);
+
         }
 
         if (!IsTowerFunctional)
@@ -45,7 +51,7 @@ public class Tower : Character
 
     public void SetTowerEnabled(bool isEnabled)
     {
-        if (isEnabled)
+        if (isEnabled == true)
         {
             IsTowerFunctional = true;
             SetDisabledObjectActive(true);
@@ -56,9 +62,15 @@ public class Tower : Character
         }
     }
 
+    public bool GetTowerEnabled()
+    {
+        return IsTowerFunctional;
+    }
+
     protected void TowerEnabledChanged(bool oldFunction, bool newFunction)
     {
         SetTowerEnabled(newFunction);
+
     }
 
 

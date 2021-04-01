@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using System;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : Character
@@ -46,18 +47,19 @@ public class PlayerController : Character
         public GameObject Camera;
 
 
-    new void Start()
+    void Start()
     {
 
         if (isServer)
         {
-            base.Start();
+            base.Awake();
         }
 
         CharacterController = GetComponent<CharacterController>();
 
         if (hasAuthority)
         {
+
             if (ClientPlayerManager.singleton == null)
                 StartCoroutine("WaitForClientPlayerManager");
             else 
@@ -204,6 +206,11 @@ public class PlayerController : Character
 
     protected override void Died()
     {
+        if (OnDeath != null)
+        {
+            OnDeath(this, new MyEventArgs());
+        }
+
         ClientPlayerManager.singleton.ClientCharacterDied(gameObject);
     }
 
@@ -219,4 +226,15 @@ public class PlayerController : Character
             yield return new WaitForSeconds(0.1f);
         }
     }
+
+    
+    public delegate void MyEventHandler(object source, MyEventArgs e);
+    public event MyEventHandler OnDeath;
+
+
+    public class MyEventArgs : EventArgs
+    {
+
+    }
+
 }

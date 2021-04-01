@@ -8,7 +8,7 @@ public class LookAtPlayer : MonoBehaviour
     {
         if (ClientPlayerManager.singleton.PlayerCharacter != null)
         {
-            transform.LookAt(ClientPlayerManager.singleton.PlayerCharacter.transform);
+            transform.LookAt(ClientPlayerManager.singleton.PlayerCharacter.CharacterCenter);
         }
     }
 }

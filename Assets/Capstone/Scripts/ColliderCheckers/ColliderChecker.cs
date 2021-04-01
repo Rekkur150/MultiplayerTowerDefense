@@ -48,6 +48,11 @@ public abstract class ColliderChecker : MonoBehaviour
 
         return false;
     }
+    /// <summary>
+    /// Checks to see if the object collides with anything
+    /// </summary>
+    /// <param name="layerMask"></param>
+    /// <returns>true if collision detected</returns>
     public abstract bool Collide(LayerMask layerMask);
 
     protected void RemoveLayerFromObject()

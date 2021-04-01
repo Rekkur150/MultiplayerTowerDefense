@@ -18,7 +18,7 @@ public class ClientPlayerManager : NetworkBehaviour
     [Tooltip("The time to respawn in seconds")]
     public float RespawnTime = 5;
 
-    private void Start()
+    private void Awake()
     {
         if (singleton == null)
         {

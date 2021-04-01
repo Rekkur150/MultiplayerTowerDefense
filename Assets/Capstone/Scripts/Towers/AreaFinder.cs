@@ -16,15 +16,20 @@ public class AreaFinder : MonoBehaviour
     [Tooltip("The list of target characters in the collider")]
     private List<Character> TargetCharacters = new List<Character>();
 
-    protected void Start()
+    [HideInInspector]
+    public Collider AreaFinderCollider;
+
+    protected void Awake()
     {
 
         if (CantSeeMask.value == 0)
             CantSeeMask = LayerMask.GetMask("Default", "JumpDisabled");
 
         if (TryGetComponent(out Collider collider))
+        {
+            AreaFinderCollider = collider;
             collider.isTrigger = true;
-        else Debug.LogError("Collider missing!!!", this);
+        } else Debug.LogError("Collider missing!!!", this);
 
         gameObject.layer = LayerMask.NameToLayer("Utility");
     }
@@ -50,7 +55,6 @@ public class AreaFinder : MonoBehaviour
     {
         if (other.tag == TargetTag && other.TryGetComponent(out Character character))
         {
-            Debug.Log("Removed Character");
             TargetCharacters.Remove(character);
         }
     }
