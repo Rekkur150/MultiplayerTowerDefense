@@ -6,14 +6,23 @@ using Mirror;
 public class Character : ServerObject
 {
     [Header("Character Properties")]
+    [SyncVar]
     public float MaxHealth;
 
     [SyncVar]
     private float Health;
 
+    [Tooltip("Used for aiming purposes")]
+    public Transform CharacterCenter;
+    [Tooltip("Used for accurate aiming")]
+    protected Vector3 Velocity;
+
     [ServerCallback]
-    protected void Start()
+    protected void Awake()
     {
+        if (CharacterCenter == null)
+            CharacterCenter = transform;
+
         Health = MaxHealth;
     }
 
@@ -26,10 +35,27 @@ public class Character : ServerObject
             Died();
     }
 
+    public float GetHealth()
+    {
+        return Health;
+    }
+
     public void Damage(float health)
     {
         SetHealth(Health - health);
     }
 
+    [Command]
+    public void SetVelocity(Vector3 velocity)
+    {
+        Velocity = velocity;
+    }
+
+    public Vector3 GetVelocity()
+    {
+        return Velocity;
+    }
+
+    [ServerCallback]
     protected virtual void Died() {}
 }

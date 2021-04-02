@@ -19,18 +19,17 @@ public class DamageObject : ServerObject
         [Tooltip("The amount of damage it does to other characters, when they exit the collider")]
         public float ExitDamage = 0;
 
-    [Header("In Damage")]
-        [Tooltip("The amount of damage it does to other characters, when they stay in the collider")]
-        public float InDamage = 0;
-        [Tooltip("The amount of time between InDamage activation in seconds")]
-        public float InRate = 0;
-        [Tooltip("Boolean to keep tract of InRate")]
-        private bool CanInDamage = true;
+    [ServerCallback]
+    void Start()
+    {
+        if (!TryGetComponent(out Collider collider))
+            Debug.LogError("There is no collider attached to this damage object", this);
+    }
 
     [ServerCallback]
     void OnTriggerEnter(Collider other)
     {
-        if (EnterDamage != 0 && other.tag == TargetTag && other.TryGetComponent(out Character character))
+        if (IsEnabled && EnterDamage != 0 && other.tag == TargetTag && other.TryGetComponent(out Character character))
         {
             character.Damage(EnterDamage);
         }
@@ -39,27 +38,9 @@ public class DamageObject : ServerObject
     [ServerCallback]
     void OnTriggerExit(Collider other)
     {
-        if (ExitDamage != 0 && other.tag == TargetTag && other.TryGetComponent(out Character character))
+        if (IsEnabled && ExitDamage != 0 && other.tag == TargetTag && other.TryGetComponent(out Character character))
         {
             character.Damage(ExitDamage);
         }
     }
-
-    [ServerCallback]
-    void OnTriggerStay(Collider other) //TODO Change this because there is a possible issue with this being only called on fixedupdate, so the rate may be too inconsistent, if is less than like 50ms, I would be fine with it
-    {
-        if (InDamage != 0 && CanInDamage && other.tag == TargetTag && other.TryGetComponent(out Character character))
-        {
-            character.Damage(InDamage);
-            StartCoroutine("InDamageCooldown");
-        }
-    }
-
-    private IEnumerator InDamageCooldown()
-    {
-        CanInDamage = false;
-        yield return new WaitForSeconds(InRate);
-        CanInDamage = true;
-    }
-
 }

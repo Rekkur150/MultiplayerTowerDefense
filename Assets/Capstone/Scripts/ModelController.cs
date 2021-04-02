@@ -9,7 +9,7 @@ public class ModelController : MonoBehaviour
     /// <summary>
     /// Struct to keep track of gameobject connections
     /// </summary>
-    [Serializable]
+    
     public struct PrefabLinker
     {
         public GameObject prefab;
