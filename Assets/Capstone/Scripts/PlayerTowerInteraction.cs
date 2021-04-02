@@ -82,7 +82,17 @@ public class PlayerTowerInteraction : NetworkBehaviour
         if (tower == null)
             return;
 
+        ServerDeleteTower(tower);
+    }
+
+    [Command]
+    private void ServerDeleteTower(TowerInterface tower)
+    {
+        if (tower == null)
+            return;
+
         tower.tower.ServerDestroy();
+
     }
 
     private void UpgradeTower()

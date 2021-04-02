@@ -9,6 +9,9 @@ public class Tower : Character
     [Tooltip("The time in seconds it will take to build a tower")]
     public float BuildTime;
 
+    [Tooltip("The cost of this tower")]
+    public float Cost;
+
     [Tooltip("Needed in order for the tower to find prey")]
     public AreaFinder AreaFinder;
 

@@ -119,7 +119,7 @@ public class TowerPlacer : NetworkBehaviour
         if (towerInterface == null)
             return;
 
-        if (CheckTowerPlacement(towerInterface.gameObject))
+        if (CheckTowerPlacement(towerInterface.gameObject) && ClientMoneyController.singleton.Money >= towerInterface.tower.Cost)
         {
             TowerSpawnCoroutine = TowerBuildWaitTime(towerInterface, conn);
             towerInterface.SetState(TowerInterface.State.Building);
@@ -147,6 +147,7 @@ public class TowerPlacer : NetworkBehaviour
         yield return new WaitForSeconds(towerInterface.tower.BuildTime);
         towerInterface.SetState(TowerInterface.State.Default);
         CollectPlacedTower(towerInterface);
+        ClientMoneyController.singleton.RemoveMoney(towerInterface.tower.Cost);
     }
 
     [TargetRpc]
@@ -231,6 +232,9 @@ public class TowerPlacer : NetworkBehaviour
 
         if (!TowerChecker.OnGround(TowerFloorCheckMask))
             return "Not fully on the ground!";
+
+        if (ClientMoneyController.singleton.Money < PlayerPreplacedTowers[0].tower.Cost)
+            return "Not enough money";
 
         return default;
     }

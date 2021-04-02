@@ -129,7 +129,8 @@ MonoBehaviour:
   syncInterval: 0.1
   MaxHealth: 50
   CharacterCenter: {fileID: 0}
-  BuildTime: 10
+  BuildTime: 2
+  Cost: 50
   AreaFinder: {fileID: 5530648143629440707}
   GameObjectDisableOnTowerNonFunctional:
   - {fileID: 578265262760773413}
