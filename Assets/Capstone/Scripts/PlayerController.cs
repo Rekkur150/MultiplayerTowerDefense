@@ -7,7 +7,7 @@ using System;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : Character
 {
-   
+
         [Tooltip("If the player can control their player character")]
         [HideInInspector]
         public bool CanPlayerControlCharacter = true;
@@ -46,6 +46,8 @@ public class PlayerController : Character
     [Header("Camera")]
         public GameObject Camera;
 
+    [System.NonSerialized]
+    public bool isReady;
 
     void Start()
     {
@@ -62,7 +64,7 @@ public class PlayerController : Character
 
             if (ClientPlayerManager.singleton == null)
                 StartCoroutine("WaitForClientPlayerManager");
-            else 
+            else
                 ClientPlayerManager.singleton.PlayerCharacter = this;
 
             ObjectActivationHelper(true, ClientEnableOnStart);
@@ -89,6 +91,8 @@ public class PlayerController : Character
             {
                 MoveCharacter();
 
+                PlayerInput();
+
                 if (Cursor.lockState == CursorLockMode.Locked)
                 {
                     RotateCharacter();
@@ -108,7 +112,7 @@ public class PlayerController : Character
         if (hasAuthority)
         {
             SetVelocity(CharacterController.velocity);
-        }   
+        }
     }
 
     protected void MoveCharacter()
@@ -204,6 +208,22 @@ public class PlayerController : Character
         }
     }
 
+    private void PlayerInput()
+    {
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            if (!isReady)
+            {
+                isReady = true;
+                WaveManager.singleton.ReadyPlayer();
+            }
+            else
+            {
+                isReady = false;
+                WaveManager.singleton.UnreadyPlayer();
+            }
+        }
+    }
     protected override void Died()
     {
         if (OnDeath != null)
@@ -227,7 +247,7 @@ public class PlayerController : Character
         }
     }
 
-    
+
     public delegate void MyEventHandler(object source, MyEventArgs e);
     public event MyEventHandler OnDeath;
 
