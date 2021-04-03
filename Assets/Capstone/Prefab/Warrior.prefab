@@ -752,6 +752,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8918766210931903301}
     m_Modifications:
+    - target: {fileID: 2965562574611162539, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4337776842380395513, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
       propertyPath: m_Name
       value: HUDCharacterCanvas
@@ -873,16 +877,36 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.25
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.25
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6259902075626493485, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 104
       objectReference: {fileID: 0}
     - target: {fileID: 7545267327747817428, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
       propertyPath: m_IsActive
@@ -892,7 +916,8 @@ PrefabInstance:
       propertyPath: Character
       value: 
       objectReference: {fileID: 585551790437920543}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8022095715614556511, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0da589a30eb71354e8c19b1f49eec353, type: 3}
 --- !u!1 &6282745031621337779 stripped
 GameObject:

@@ -8,7 +8,18 @@ public class ClientPlayerManager : NetworkBehaviour
     public static ClientPlayerManager singleton;
 
     [Tooltip("The local player's character")]
-    public Character PlayerCharacter;
+    private Character playerCharacter;
+    public Character PlayerCharacter
+    {
+        get {
+            return playerCharacter;
+        }
+
+        set {
+            playerCharacter = value;
+            ChangedPlayerCharacter(value);
+        }
+    }
 
     [Header("Player Death")]
     [Tooltip("The gameobject that will be given to the player on death, aka spectator controller or something")]
@@ -66,5 +77,14 @@ public class ClientPlayerManager : NetworkBehaviour
         if (gameObject != null)
             gameObject.SetActive(state);
     }
+
+    private void ChangedPlayerCharacter(Character player)
+    {
+        if (OnPlayerCharacterUpdate != null)
+            OnPlayerCharacterUpdate(player);
+    }
+
+    public delegate void PlayerCharacterChangedHandler(Character player);
+    public event PlayerCharacterChangedHandler OnPlayerCharacterUpdate;
 
 }

@@ -12,8 +12,6 @@ public class ClientMoneyController : NetworkBehaviour
 
     private void Awake()
     {
-        Debug.Log("Is this working");
-
         if (singleton == null)
         {
             singleton = this;

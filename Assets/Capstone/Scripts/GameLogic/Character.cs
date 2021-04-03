@@ -9,7 +9,7 @@ public class Character : ServerObject
     [SyncVar]
     public float MaxHealth;
 
-    [SyncVar]
+    [SyncVar(hook = nameof(ChangedHealth))]
     private float Health;
 
     [Tooltip("Used for aiming purposes")]
@@ -35,6 +35,12 @@ public class Character : ServerObject
             Died();
     }
 
+    private void ChangedHealth(float oldHealth, float newHealth)
+    {
+        if (OnHealthChange != null)
+            OnHealthChange(newHealth);
+    }
+
     public float GetHealth()
     {
         return Health;
@@ -58,4 +64,7 @@ public class Character : ServerObject
 
     [ServerCallback]
     protected virtual void Died() {}
+
+    public delegate void ChangeHealthHandler(float health);
+    public event ChangeHealthHandler OnHealthChange;
 }

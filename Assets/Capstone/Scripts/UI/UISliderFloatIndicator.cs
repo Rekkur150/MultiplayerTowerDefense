@@ -51,6 +51,13 @@ public class UISliderFloatIndicator : MonoBehaviour
 
     public void SetMaxValue(float newMaxValue)
     {
+        if (newMaxValue <= 0f)
+        {
+            SetValue(0f);
+            return;
+        }
+            
+
         MaxValue = newMaxValue;
         PositionMovementPerValueChange = Slider.rect.width / newMaxValue;
     }

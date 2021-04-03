@@ -58,7 +58,6 @@ public class ColliderChanger : MonoBehaviour
 
         foreach (ColliderLinker colliderLink in ColliderLinkers)
         {
-            Debug.Log(colliderLink);
             colliderLink.collider.enabled = Enabled;
         }
     }
