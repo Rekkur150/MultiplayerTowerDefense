@@ -14,18 +14,23 @@ public class NetworkManagerTD : NetworkManager
         //var player = conn.identity.GetComponent<PlayerController>();
 
         //Players.Add(player);
+
+        NetworkPlayerManager.singleton.AddPlayer(conn);
+
     }
 
     public override void OnServerDisconnect(NetworkConnection conn)
     {
-        var player = conn.identity.GetComponent<PlayerController>();
+        /*        var player = conn.identity.GetComponent<PlayerController>();
 
-        if (player.isReady)
-        {
-            player.isReady = false;
-        }
-
+                if (player.isReady)
+                {
+                    player.isReady = false;
+                }
+        */
         //Players.Remove(player);
+
+        NetworkPlayerManager.singleton.RemovePlayer(conn);
 
         base.OnServerDisconnect(conn);
     }
