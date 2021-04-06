@@ -366,6 +366,7 @@ GameObject:
   - component: {fileID: 226679092}
   - component: {fileID: 226679093}
   - component: {fileID: 226679094}
+  - component: {fileID: 226679095}
   m_Layer: 0
   m_Name: ClientPlayerManager
   m_TagString: Untagged
@@ -481,6 +482,24 @@ MonoBehaviour:
   syncInterval: 0.1
   BuildTimeMultiplier: 1
   TowerRefundPercentage: 0.5
+--- !u!114 &226679095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226679087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba33b58160576d4480b75b36e9f2396, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  waves: []
+  enemy: {fileID: 0}
+  enemySpawns: []
+  numberOfReadyPlayers: 0
 --- !u!1001 &230385578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -783,7 +802,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 25.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1925,7 +1944,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 29.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
