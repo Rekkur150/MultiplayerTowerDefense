@@ -25,7 +25,6 @@ public class TowerPlacer : NetworkBehaviour
     private List<TowerInterface> PlayerPreplacedTowers = new List<TowerInterface>();
 
     private IEnumerator TowerSpawnCoroutine;
-    private bool IsTowerSpawningCoroutine = false;
 
     private void Awake()
     {
@@ -49,7 +48,7 @@ public class TowerPlacer : NetworkBehaviour
 
     public void ClientEnableDisabledTower()
     {
-        if (PlayerPreplacedTowers.Count == 0 || PlayerPreplacedTowers[0] == null || PlayerPreplacedTowers[0].GetState() == TowerInterface.State.Building)
+        if (PlayerPreplacedTowers.Count == 0 || PlayerPreplacedTowers[0] == null)
             return;
 
         if (OnStartBuildingATower != null)
@@ -122,11 +121,9 @@ public class TowerPlacer : NetworkBehaviour
 
         if (CheckTowerPlacement(towerInterface.gameObject) && ClientMoneyController.singleton.Money >= towerInterface.tower.Cost)
         {
-            ClientMoneyController.singleton.RemoveMoney(towerInterface.tower.Cost);
             TowerSpawnCoroutine = TowerBuildWaitTime(towerInterface, conn);
             towerInterface.SetState(TowerInterface.State.Building);
             ChangeClientAuthority(towerInterface, false);
-            IsTowerSpawningCoroutine = true;
             StartCoroutine(TowerSpawnCoroutine);
         } else
         {
@@ -147,12 +144,10 @@ public class TowerPlacer : NetworkBehaviour
     [ServerCallback]
     private IEnumerator TowerBuildWaitTime(TowerInterface towerInterface, NetworkConnectionToClient conn = null)
     {
-        yield return new WaitForSeconds(towerInterface.tower.BuildTime * MapController.singleton.BuildTimeMultiplier);
+        yield return new WaitForSeconds(towerInterface.tower.BuildTime);
         towerInterface.SetState(TowerInterface.State.Default);
         CollectPlacedTower(towerInterface);
-
-        NetworkPlayerManager.singleton.AddTowerToPlayer(towerInterface, conn);
-        IsTowerSpawningCoroutine = false;
+        ClientMoneyController.singleton.RemoveMoney(towerInterface.tower.Cost);
     }
 
     [TargetRpc]
@@ -182,16 +177,8 @@ public class TowerPlacer : NetworkBehaviour
     [Command]
     private void DestroyTower(TowerInterface towerInterface, int index, NetworkConnectionToClient conn = null)
     {
-        if (IsTowerSpawningCoroutine)
-            ClientMoneyController.singleton.RemoveMoney(-towerInterface.tower.Cost);
-
         if (TowerSpawnCoroutine != null)
-        {
             StopCoroutine(TowerSpawnCoroutine);
-            IsTowerSpawningCoroutine = false;
-        }
-            
-
 
         if (towerInterface == null)
             return;
