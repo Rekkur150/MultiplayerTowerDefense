@@ -5,44 +5,104 @@ using Mirror;
 
 public class NetworkPlayerManager : NetworkBehaviour
 {
+    public static NetworkPlayerManager singleton;
+
     public struct Player
     {
-        public Player(int connectionID, string name, Character character)
+        public Player(NetworkConnection conn)
         {
-            this.connectionID = connectionID;
-            this.name = name;
-            this.character = character;
+            this.networkConnection = conn;
+            this.name = null;
+            this.character = null;
+            this.towers = new List<TowerInterface>();
         }
 
-        public int connectionID;
+        public NetworkConnection networkConnection;
         public string name;
         public Character character;
+        public List<TowerInterface> towers;
     }
 
-
-    [SyncVar]
     public List<Player> players = new List<Player>();
 
     // Start is called before the first frame update
     void Awake()
     {
-        
+        if (singleton == null)
+        {
+            singleton = this;
+        }
+        else if (singleton != this)
+        {
+            Destroy(this);
+        }
     }
 
     [ServerCallback]
-    public void AddCharacter(int connectionID, string name, Character character)
+    public void AddPlayer(NetworkConnection conn)
     {
-        players.Add(new Player(connectionID,name,character));
+        Player player = new Player(conn);
+        players.Add(player);
     }
 
     [ServerCallback]
-    public void RemoveCharacter(int connectionID)
+    public void RemovePlayer(NetworkConnection conn)
     {
-        players.RemoveAll(item => item.connectionID == connectionID);
+        if (!players.Exists(item => item.networkConnection.connectionId == conn.connectionId))
+            return;
+
+        Player player = players.Find(item => item.networkConnection.connectionId == conn.connectionId);
+
+        SellTowers(player);
+
+        players.RemoveAll(item => item.networkConnection.connectionId == conn.connectionId);
     }
 
-    public void UpdateCharacter(int connectionID, Character character)
+    [Command(requiresAuthority = false)]
+    public void PlayerCharacterUpdated(Character newCharacter, NetworkConnectionToClient conn = null)
     {
-        players.Find(item => item.connectionID == connectionID).character = character;
+        if (newCharacter == null || conn == null)
+            return;
+
+        if (!players.Exists(item => item.networkConnection.connectionId == conn.connectionId))
+            return;
+
+        Player player = players.Find(item => item.networkConnection.connectionId == conn.connectionId);
+        player.character = newCharacter;
+    }
+
+    [ServerCallback]
+    public void AddTowerToPlayer(TowerInterface tower, NetworkConnectionToClient conn)
+    {
+        if (tower == null || conn == null)
+            return;
+
+        if (!players.Exists(item => item.networkConnection.connectionId == conn.connectionId))
+            return;
+
+        Player player = players.Find(item => item.networkConnection.connectionId == conn.connectionId);
+        player.towers.Add(tower);
+    }
+
+    [Command(requiresAuthority = false)]
+    public void RemoveTowerFromPlayer(TowerInterface tower)
+    {
+        if (tower == null)
+            return;
+
+        if (!players.Exists(item => item.towers.Contains(tower)))
+            return;
+
+        Player player = players.Find(item => item.towers.Contains(tower));
+        player.towers.Remove(tower);
+    }
+
+    [ServerCallback]
+    private void SellTowers(Player player)
+    {
+        foreach (TowerInterface tower in player.towers)
+        {
+            tower.tower.SellTower(1);
+        }
     }
 }

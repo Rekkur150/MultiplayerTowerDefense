@@ -12,6 +12,8 @@ public class Tower : Character
     [Tooltip("The cost of this tower")]
     public float Cost;
 
+    public List<GameObject> SpawnOnDestroy = new List<GameObject>();
+
     [Tooltip("Needed in order for the tower to find prey")]
     public AreaFinder AreaFinder;
 
@@ -90,7 +92,34 @@ public class Tower : Character
         }
     }
 
+    [ServerCallback]
+    private void SpawnOnDestruction()
+    {
+        foreach (GameObject obj in SpawnOnDestroy)
+        {
+            GameObject newObject = Instantiate(obj);
+            newObject.transform.position = transform.position;
 
+            NetworkServer.Spawn(newObject);
+        }
+    }
+
+    [ServerCallback]
+    protected override void OnObjectDestroy()
+    {
+        if (!TryGetComponent(out TowerInterface towerInterface))
+            return;
+
+        SpawnOnDestruction();
+
+        NetworkPlayerManager.singleton.RemoveTowerFromPlayer(towerInterface);
+    }
+
+    [ServerCallback]
+    public void SellTower(float refundPercentage)
+    {
+        ManaDropper.singleton.SpawnMana(Cost * refundPercentage, transform);
+    }
 
 
 }

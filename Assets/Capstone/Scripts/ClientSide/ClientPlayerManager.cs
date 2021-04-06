@@ -82,7 +82,10 @@ public class ClientPlayerManager : NetworkBehaviour
     {
         if (OnPlayerCharacterUpdate != null)
             OnPlayerCharacterUpdate(player);
+
+        NetworkPlayerManager.singleton.PlayerCharacterUpdated(playerCharacter);
     }
+
 
     public delegate void PlayerCharacterChangedHandler(Character player);
     public event PlayerCharacterChangedHandler OnPlayerCharacterUpdate;
