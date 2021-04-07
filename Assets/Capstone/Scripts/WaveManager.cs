@@ -5,45 +5,23 @@ using Mirror;
 
 public class WaveManager : NetworkBehaviour
 {
-    [System.Serializable]
-    public struct Wave
-    {
-        public int enemyCount;
-    }
 
-    public Wave[] waves;
+    public List<Wave> waves = new List<Wave>();
 
     public static WaveManager singleton;
 
-    [Tooltip("Enemy prefab for default enemy.")]
-    public GameObject enemy;
-
-    [Tooltip("Array of all potential enemy spawn points on the map.")]
-    public GameObject[] enemySpawns;
-
-    [SyncVar]
     [Tooltip("Current Wave the players are on.")]
     private int currentWave = 0;
 
-    [Tooltip("Number of enemies left in the wave.")]
-    private int enemiesAlive;
-
     [SyncVar]
-    [System.NonSerialized]
-    public int numOfPlayers;
-
-    [SyncVar]
-    [System.NonSerialized]
     public bool isWaveActive = false;
 
-    [SyncVar]
-    [Tooltip("The number of players connected")]
-    public int numberOfReadyPlayers;
+    public int numberOfReadyPlayers = 0;
 
-    [Tooltip("The enemies for the current wave will be stored here for when we need to spawn them")]
     private List<GameObject> currentWaveEnemies = new List<GameObject>();
+    private List<bool> SpawnPointsDoneSpawning = new List<bool>();
 
-    private void Start()
+    private void Awake()
     {
         if (singleton == null)
         {
@@ -53,11 +31,6 @@ public class WaveManager : NetworkBehaviour
         {
             Destroy(this);
         }
-    }
-
-    private void Update()
-    {
-        
     }
 
     [Command(requiresAuthority = false)]
@@ -71,11 +44,14 @@ public class WaveManager : NetworkBehaviour
     public void UnreadyPlayer()
     {
         numberOfReadyPlayers--;
-        CheckIfReady();
     }
 
+    [ServerCallback]
     public void CheckIfReady()
     {
+        if (isWaveActive)
+            return;
+
         if (numberOfReadyPlayers >= NetworkManagerTD.singleton.numPlayers)
         {
             Debug.Log("Starting wave");
@@ -88,44 +64,61 @@ public class WaveManager : NetworkBehaviour
     }
 
     [ServerCallback]
-    private void StartWave(int waveNumber)
+    private void StartWave(int waveIndex)
     {
-        for (int i = 0; i < waves[waveNumber].enemyCount; i++)
-        {
-            currentWaveEnemies.Add(enemy);
-        }
+
+        if (waveIndex >= waves.Count || waves[waveIndex] == null)
+            return;
 
         isWaveActive = true;
+        SpawnPointsDoneSpawning.Clear();
 
-        StartCoroutine(SpawnEnemies());
-    }
-
-    IEnumerator SpawnEnemies()
-    {
-        while (currentWaveEnemies.Count > 0)
+        for (int i = 0; i < waves[waveIndex].EnemySpawns.Count; i++)
         {
-            // Index for random element in currentWaveEnemies list.
-            int index = Random.Range(0, currentWaveEnemies.Count);
-
-            GameObject spawn = enemySpawns[Random.Range(0, enemySpawns.Length)];
-            GameObject childObject = Instantiate(currentWaveEnemies[index]);
-
-            // Spawn the enemy at one of the available spawn points.
-            NetworkServer.Spawn(childObject);
-            Debug.Log(enemySpawns[Random.Range(0, enemySpawns.Length)].transform);
-
-            ChangeObjectParent(childObject, spawn);
-
-            // Remove enemy from list.
-            currentWaveEnemies.RemoveAt(index);
-
-            yield return new WaitForSeconds(2f);
+            StartCoroutine(StartSpawningFromEnemySpawn(waves[waveIndex].EnemySpawns[i], i));
+            SpawnPointsDoneSpawning.Add(false);
         }
     }
-    
-    [ClientRpc]
-    private void ChangeObjectParent(GameObject childObject, GameObject parent)
+
+    [ServerCallback]
+    IEnumerator StartSpawningFromEnemySpawn(Wave.EnemySpawn enemySpawn, int index)
     {
-        childObject.transform.parent = parent.transform;
+
+        foreach (Wave.EnemySpawn.SpawningInformation spawnInfo in enemySpawn.spawning)
+        {
+            yield return new WaitForSeconds(spawnInfo.Wait);
+
+            for (int i = 0; i < spawnInfo.NumberOfEnemies; i++)
+            {
+                GameObject newEnemy = Instantiate(spawnInfo.EnemyPrefab);
+                newEnemy.transform.position = enemySpawn.spawnPoint.position;
+
+                NetworkServer.Spawn(newEnemy);
+
+                yield return new WaitForSeconds(spawnInfo.TimeBetweenEnemySpawn);
+            }
+        }
+
+        SpawnPointsDoneSpawning[index] = true;
+        isFinishedSpawning();
     }
+
+    [ServerCallback]
+    private void isFinishedSpawning()
+    {
+        foreach (bool done in SpawnPointsDoneSpawning)
+        {
+            if (done == false)
+                return;
+        }
+
+        WaveFinished();
+    }
+
+    [ServerCallback]
+    private void WaveFinished()
+    {
+        isWaveActive = false;
+    }
+   
 }
