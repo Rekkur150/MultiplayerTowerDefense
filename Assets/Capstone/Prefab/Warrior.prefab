@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 1163160705947051240}
   - component: {fileID: 69111573440311832}
   - component: {fileID: 2482590295083338395}
+  - component: {fileID: -6257122884054125505}
   m_Layer: 7
   m_Name: Warrior
   m_TagString: Player
@@ -466,6 +467,22 @@ MonoBehaviour:
   DeleteMaterial: {fileID: 2100000, guid: b12be874fd753f345b90860fff03bc5e, type: 2}
   UpgradeMaterial: {fileID: 2100000, guid: c39e0ec3b95ca3f488a0ae4f4ddb5ade, type: 2}
   selectTowerController: {fileID: 1163160705947051240}
+--- !u!208 &-6257122884054125505
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8110422392308371967}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8823205487257409580
 GameObject:
   m_ObjectHideFlags: 0

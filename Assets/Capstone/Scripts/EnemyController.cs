@@ -50,13 +50,13 @@ public class EnemyController : Character
         Character player = playerFinder.GetClosestTarget(transform.position);
         Character tower = towerFinder.GetClosestTarget(transform.position);
 
-        if (player != null)
-        {
-            target = player.transform.position;
-        }
-        else if (tower != null)
+        if (tower != null)
         {
             target = tower.transform.position;
+        }
+        else if (player != null)
+        {
+            target = player.transform.position;
         }
         else
         {
