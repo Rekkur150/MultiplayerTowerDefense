@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 6890591405362917672}
   - component: {fileID: 8357952640858879682}
   - component: {fileID: 2481736366422822404}
-  m_Layer: 14
+  m_Layer: 12
   m_Name: TowerFinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
