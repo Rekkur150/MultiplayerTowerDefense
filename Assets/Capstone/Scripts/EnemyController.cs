@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.AI;
 using Mirror;
 
-public class EnemyController : NetworkBehaviour
+public class EnemyController : Character
 {
     private NavMeshAgent navAgent;
-    private Transform goal;
+    private Vector3 target;
+    private Vector3 goal;
+    public AreaFinder playerFinder;
+    public AreaFinder towerFinder;
 
     // Start is called before the first frame update
     void Start()
@@ -15,17 +18,17 @@ public class EnemyController : NetworkBehaviour
         if (isServer)
         {
             navAgent = GetComponent<NavMeshAgent>();
-            FindGoal(goal);
+            FindGoal();
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        FindTarget();
     }
 
-    void FindGoal(Transform goal)
+    void FindGoal()
     {
         GameObject goalObject;
 
@@ -33,12 +36,35 @@ public class EnemyController : NetworkBehaviour
 
         if (goalObject != null)
         {
-            goal = goalObject.transform;
-            navAgent.destination = goal.position;
+            goal = goalObject.transform.position;
+            navAgent.destination = goal;
         }
         else
         {
             Debug.Log("No goal found");
         }
+    }
+
+    private void FindTarget()
+    {
+        Character player = playerFinder.GetClosestTarget(transform.position);
+        Character tower = towerFinder.GetClosestTarget(transform.position);
+
+        if (tower != null)
+        {
+            target = tower.transform.position;
+        }
+        else if (player != null)
+        {
+            target = player.transform.position;
+        }
+        else
+        {
+            target = goal;
+        }
+
+        Debug.Log(tower);
+
+        navAgent.destination = target;
     }
 }

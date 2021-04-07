@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Goal
   - WaveManager
+  - Tower
   layers:
   - Default
   - TransparentFX
