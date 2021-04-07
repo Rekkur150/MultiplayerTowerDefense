@@ -713,9 +713,10 @@ GameObject:
   - component: {fileID: 5245084565094062277}
   - component: {fileID: 2446750366791896365}
   - component: {fileID: 2420809424765947918}
+  - component: {fileID: 1089446497925312578}
   m_Layer: 14
   m_Name: LightningTower
-  m_TagString: Untagged
+  m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -925,6 +926,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IgnoredColliders: []
+--- !u!208 &1089446497925312578
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715027212618022199}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1468355950562043534
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,14 +1536,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1019d88d0cfb75c479a93cdd51834dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &3932353223267529778 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4585017903745382757, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
-  m_PrefabInstance: {fileID: 663092449164758359}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &268471101484343209 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 759430597740008190, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+  m_PrefabInstance: {fileID: 663092449164758359}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &6388227469065496647 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
   m_PrefabInstance: {fileID: 663092449164758359}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &5610055709238964438 stripped
@@ -1540,9 +1557,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1019d88d0cfb75c479a93cdd51834dcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!224 &6388227469065496647 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
+--- !u!1 &3932353223267529778 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4585017903745382757, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
   m_PrefabInstance: {fileID: 663092449164758359}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5456178556258450142
@@ -1677,11 +1694,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -6740318152158470058, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
   m_PrefabInstance: {fileID: 5456178556258450142}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &5821693717432141111 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -7245461762470182935, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
-  m_PrefabInstance: {fileID: 5456178556258450142}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4919939644634413552 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8070698510402927826, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
@@ -1700,6 +1712,11 @@ Transform:
 --- !u!4 &983962158472182723 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5052899296753107229, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
+  m_PrefabInstance: {fileID: 5456178556258450142}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5821693717432141111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -7245461762470182935, guid: 3a284b310391d3040b4131db6fddc39d, type: 3}
   m_PrefabInstance: {fileID: 5456178556258450142}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6993421423081945278
