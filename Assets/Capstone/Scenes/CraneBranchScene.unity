@@ -2282,6 +2282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8158006845841375099, guid: 02a796cd5e4e21c48b64de3fc320e443, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02a796cd5e4e21c48b64de3fc320e443, type: 3}
 --- !u!1 &703348158
