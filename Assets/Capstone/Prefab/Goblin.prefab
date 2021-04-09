@@ -208,7 +208,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -251,6 +251,7 @@ MonoBehaviour:
   CharacterCenter: {fileID: 1001807963801708704}
   playerFinder: {fileID: 8400443329268849180}
   towerFinder: {fileID: 2481736366422822404}
+  Animator: {fileID: 2332167144159838378}
 --- !u!114 &8158006845841375096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,6 +439,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4c88711a0cf4ed249b5252292b282671, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6106406633060489117, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
       propertyPath: m_Layer
       value: 16
@@ -463,5 +472,10 @@ PrefabInstance:
 --- !u!4 &8556181224849267408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
+  m_PrefabInstance: {fileID: 8158006845206478139}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &2332167144159838378 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
   m_PrefabInstance: {fileID: 8158006845206478139}
   m_PrefabAsset: {fileID: 0}

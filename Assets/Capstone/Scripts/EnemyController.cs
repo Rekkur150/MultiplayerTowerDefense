@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using Mirror;
 
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : Character
 {
     private NavMeshAgent navAgent;
@@ -11,21 +12,26 @@ public class EnemyController : Character
     private Vector3 goal;
     public AreaFinder playerFinder;
     public AreaFinder towerFinder;
+    public Animator Animator;
 
+    [ServerCallback]
     // Start is called before the first frame update
     void Start()
     {
-        if (isServer)
-        {
-            navAgent = GetComponent<NavMeshAgent>();
-            FindGoal();
-        }
+        navAgent = GetComponent<NavMeshAgent>();
+
+        if (Animator == null)
+            Debug.LogWarning("No Animator on this object!", this);
+
+        FindGoal();
     }
 
     // Update is called once per frame
-    void Update()
+    [ServerCallback]
+    void FixedUpdate()
     {
         FindTarget();
+        UpdateAnimation();
     }
 
     void FindGoal()
@@ -43,6 +49,15 @@ public class EnemyController : Character
         {
             Debug.Log("No goal found");
         }
+    }
+
+    private void UpdateAnimation()
+    {
+        Vector3 Velocity = transform.InverseTransformDirection(navAgent.velocity);
+        Vector2 xyVelocity = new Vector2(Velocity.x, Velocity.z);
+        xyVelocity = xyVelocity.normalized;
+        Animator.SetFloat("Side", xyVelocity.x);
+        Animator.SetFloat("Forward", xyVelocity.y);
     }
 
     private void FindTarget()

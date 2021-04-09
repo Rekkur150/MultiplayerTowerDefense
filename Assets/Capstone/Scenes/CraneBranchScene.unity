@@ -436,7 +436,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &168578222
 GameObject:
@@ -1930,7 +1930,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 12.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2173,7 +2173,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 14.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2386,7 +2386,7 @@ RectTransform:
   - {fileID: 518637957}
   - {fileID: 766516967}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2763,6 +2763,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827759448}
   m_CullTransparentMesh: 1
+--- !u!4 &892722371 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1257294290191779945, guid: 02a796cd5e4e21c48b64de3fc320e443, type: 3}
+  m_PrefabInstance: {fileID: 665370889}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915375328
 GameObject:
   m_ObjectHideFlags: 0
@@ -2924,7 +2929,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &946111104
 MonoBehaviour:
@@ -2997,39 +3002,51 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 892722371}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.044386
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.0443866
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.0325065
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.875036
+      value: 0.013
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.05
+      value: -0.105
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.2394757
+      value: -0.057
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1.5015778e-15
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.2231903e-22
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a8312b37e9670404cb53b246abd771ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3091,25 +3108,8 @@ MonoBehaviour:
   syncInterval: 0.1
   IsEnabled: 1
   TargetTag: Player
-  EnterDamage: 0
+  EnterDamage: 5
   ExitDamage: 0
---- !u!114 &1233235832
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1233235829}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76bac8db817269149828322170499979, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TargetTag: Enemy
-  CantSeeMask:
-    serializedVersion: 2
-    m_Bits: 0
-  AreaFinderCollider: {fileID: 0}
 --- !u!64 &1233235833
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -3208,7 +3208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 10.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3931,7 +3931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1544557496
 MonoBehaviour:
@@ -4445,7 +4445,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1901088177 stripped
 RectTransform:
@@ -4527,7 +4527,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1948553902
 PrefabInstance:
@@ -4538,7 +4538,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d42a33b828bbae348a9e6beeb153aab4, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d42a33b828bbae348a9e6beeb153aab4, type: 3}
       propertyPath: m_LocalPosition.x
