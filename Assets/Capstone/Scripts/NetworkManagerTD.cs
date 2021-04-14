@@ -16,6 +16,7 @@ public class NetworkManagerTD : NetworkManager
         //Players.Add(player);
 
         NetworkPlayerManager.singleton.AddPlayer(conn);
+        WaveManager.singleton.AddPlayer(conn);
 
     }
 
@@ -31,6 +32,7 @@ public class NetworkManagerTD : NetworkManager
         //Players.Remove(player);
 
         NetworkPlayerManager.singleton.RemovePlayer(conn);
+        WaveManager.singleton.RemovePlayer(conn);
 
         base.OnServerDisconnect(conn);
     }
