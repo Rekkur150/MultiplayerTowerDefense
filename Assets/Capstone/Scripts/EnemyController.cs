@@ -12,6 +12,7 @@ public class EnemyController : Character
     public AreaFinder playerFinder;
     public AreaFinder towerFinder;
     public Animator Animator;
+    public DamageObject damageObject;
 
     private NavMeshAgent navAgent;
     private Vector3 target;
@@ -35,6 +36,7 @@ public class EnemyController : Character
     void FixedUpdate()
     {
         FindTarget();
+        CheckAttackRange();
         UpdateAnimation();
     }
 
@@ -70,7 +72,7 @@ public class EnemyController : Character
         Character player = playerFinder.GetClosestTarget(transform.position);
         Character tower = towerFinder.GetClosestTarget(transform.position);
 
-        if (tower != null)
+        if (tower != null && tower.GetComponent<TowerInterface>().GetState() == TowerInterface.State.Default) 
         {
             target = tower.transform.position;
         }
@@ -110,5 +112,20 @@ public class EnemyController : Character
     protected override void Died()
     {
         ServerDestroy();
+    }
+
+    [ServerCallback]
+    private void CheckAttackRange()
+    {
+        if (Vector3.Distance(this.transform.position, target) <= 3)
+        {
+            Animator.SetBool("Attacking", true);
+            damageObject.IsEnabled = true;
+        }
+        else
+        {
+            Animator.SetBool("Attacking", false);
+            damageObject.IsEnabled = false;
+        }
     }
 }
