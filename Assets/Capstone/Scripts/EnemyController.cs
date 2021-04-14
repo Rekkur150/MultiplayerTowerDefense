@@ -7,17 +7,21 @@ using Mirror;
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : Character
 {
-    private NavMeshAgent navAgent;
-    private Vector3 target;
-    private Vector3 goal;
+    [Header("Enemy Controller")]
+    public List<GameObject> SpawnOnDestroy = new List<GameObject>();
     public AreaFinder playerFinder;
     public AreaFinder towerFinder;
     public Animator Animator;
+
+    private NavMeshAgent navAgent;
+    private Vector3 target;
+    private Vector3 goal;
 
     [ServerCallback]
     // Start is called before the first frame update
     void Start()
     {
+        base.Awake();
         navAgent = GetComponent<NavMeshAgent>();
 
         if (Animator == null)
@@ -60,6 +64,7 @@ public class EnemyController : Character
         Animator.SetFloat("Forward", xyVelocity.y);
     }
 
+    [ServerCallback]
     private void FindTarget()
     {
         Character player = playerFinder.GetClosestTarget(transform.position);
@@ -78,8 +83,32 @@ public class EnemyController : Character
             target = goal;
         }
 
-        Debug.Log(tower);
+/*        Debug.Log(tower);*/
 
         navAgent.destination = target;
+    }
+
+    [ServerCallback]
+    protected override void OnObjectDestroy()
+    {
+        SpawnOnDestruction();
+    }
+
+    [ServerCallback]
+    private void SpawnOnDestruction()
+    {
+        foreach (GameObject obj in SpawnOnDestroy)
+        {
+            GameObject newObject = Instantiate(obj);
+            newObject.transform.position = transform.position;
+
+            NetworkServer.Spawn(newObject);
+        }
+    }
+
+    [ServerCallback]
+    protected override void Died()
+    {
+        ServerDestroy();
     }
 }
