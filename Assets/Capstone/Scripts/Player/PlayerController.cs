@@ -46,9 +46,6 @@ public class PlayerController : Character
     [Header("Camera")]
         public GameObject Camera;
 
-    [System.NonSerialized]
-    public bool isReady;
-
     void Start()
     {
 
@@ -90,8 +87,6 @@ public class PlayerController : Character
             if (CanPlayerControlCharacter)
             {
                 MoveCharacter();
-
-                PlayerInput();
 
                 if (Cursor.lockState == CursorLockMode.Locked)
                 {
@@ -205,23 +200,6 @@ public class PlayerController : Character
         foreach (GameObject obj in gameObjects)
         {
             obj.SetActive(isEnabled);
-        }
-    }
-
-    private void PlayerInput()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (!isReady)
-            {
-                isReady = true;
-                WaveManager.singleton.ReadyPlayer();
-            }
-            else
-            {
-                isReady = false;
-                WaveManager.singleton.UnreadyPlayer();
-            }
         }
     }
     protected override void Died()
