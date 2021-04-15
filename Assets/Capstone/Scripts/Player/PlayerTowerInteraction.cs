@@ -41,6 +41,7 @@ public class PlayerTowerInteraction : NetworkBehaviour
 
     public void SetState(State newState)
     {
+        StateChanged();
         currentState = newState;
 
         switch (newState)
@@ -50,6 +51,16 @@ public class PlayerTowerInteraction : NetworkBehaviour
                 break;
             case State.Repairing:
                 selectTowerController.ChangeHighlightMaterial(RepairMaterial);
+                break;
+        }
+    }
+
+    private void StateChanged()
+    {
+        switch (currentState)
+        {
+            case State.Repairing:
+                CancelRepairTower();
                 break;
         }
     }
