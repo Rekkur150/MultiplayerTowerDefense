@@ -20,6 +20,6 @@ public class UIRenderCharacterHealth: MonoBehaviour
 
     private void HealthUpdated(float newHealth)
     {
-        UISliderFloatIndicator.SetValue(newHealth);
+        UISliderFloatIndicator.SetValueOverTime(newHealth, 0.2f);
     }
 }

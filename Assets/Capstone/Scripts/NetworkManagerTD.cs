@@ -11,7 +11,7 @@ public class NetworkManagerTD : NetworkManager
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
         base.OnServerAddPlayer(conn);
-        
+
         NetworkPlayerManager.singleton.AddPlayer(conn);
         WaveManager.singleton.AddPlayer(conn);
     }
@@ -20,6 +20,8 @@ public class NetworkManagerTD : NetworkManager
     {
         NetworkPlayerManager.singleton.RemovePlayer(conn);
         WaveManager.singleton.RemovePlayer(conn);
+
+        NetworkPlayerManager.singleton.RemovePlayer(conn);
 
         base.OnServerDisconnect(conn);
     }
