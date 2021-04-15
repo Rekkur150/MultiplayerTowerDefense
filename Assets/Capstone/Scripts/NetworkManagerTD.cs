@@ -11,10 +11,9 @@ public class NetworkManagerTD : NetworkManager
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
         base.OnServerAddPlayer(conn);
-
+        
         NetworkPlayerManager.singleton.AddPlayer(conn);
         WaveManager.singleton.AddPlayer(conn);
-
     }
 
     public override void OnServerDisconnect(NetworkConnection conn)

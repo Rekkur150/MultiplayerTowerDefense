@@ -41,7 +41,7 @@ public class UIHudPlayerHealth : MonoBehaviour
 
     private void HealthUpdated(float newHealth)
     {
-        UISliderFloatIndicator.SetValueOverTime(newHealth, 0.2f);
+        UISliderFloatIndicator.SetValue(newHealth);
         HealthValue.text = newHealth + " / " + Character.MaxHealth;
     }
 }
