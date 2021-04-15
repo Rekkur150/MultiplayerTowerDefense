@@ -34,7 +34,7 @@ public class PlayerControls : NetworkBehaviour
 
         if (Input.GetButtonDown("TowerUpgrade"))
         {
-            PlayerInterfaceState(PlayerTowerInteraction.State.Upgrading);
+            PlayerInterfaceState(PlayerTowerInteraction.State.Repairing);
         }
 
 /*        if (playerInterface.GetState() == PlayerInterface.State.Selecting)
