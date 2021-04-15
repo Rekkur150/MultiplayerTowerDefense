@@ -39,6 +39,13 @@ public class UISliderFloatIndicator : MonoBehaviour
 
     public void SetValueOverTime(float newValue, float time)
     {
+
+        if (gameObject.activeInHierarchy == false)
+        {
+            SetValue(newValue);
+            return;
+        }
+
         if (ChangeValueCoroutine != null)
             StopValueOverTime();
 

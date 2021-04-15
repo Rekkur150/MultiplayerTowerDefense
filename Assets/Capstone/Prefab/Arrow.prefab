@@ -5059,6 +5059,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   IsEnabled: 1
-  TargetTag: Enemy
+  TargetTags:
+  - Enemy
   EnterDamage: 5
   ExitDamage: 0
