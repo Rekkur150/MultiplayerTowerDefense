@@ -43,6 +43,6 @@ public class NetworkPlayerManager : NetworkBehaviour
 
     public void UpdateCharacter(int connectionID, Character character)
     {
-        players.Find(item => item.connectionID == connectionID).character = character;
+        //players.Find(item => item.connectionID == connectionID).character = character;
     }
 }
