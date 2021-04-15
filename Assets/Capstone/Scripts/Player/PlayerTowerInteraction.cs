@@ -91,6 +91,7 @@ public class PlayerTowerInteraction : NetworkBehaviour
         if (tower == null)
             return;
 
+        tower.tower.SellTower(MapController.singleton.TowerRefundPercentage);
         tower.tower.ServerDestroy();
 
     }
