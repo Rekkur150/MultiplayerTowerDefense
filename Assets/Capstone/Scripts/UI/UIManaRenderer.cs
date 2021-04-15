@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Mirror;
 
 [RequireComponent(typeof(UISliderFloatIndicator))]
-public class UIManaRenderer : MonoBehaviour
+public class UIManaRenderer : NetworkBehaviour
 {
     public UISliderFloatIndicator manaSlider;
     public TextMeshProUGUI manaValue;
@@ -23,14 +24,14 @@ public class UIManaRenderer : MonoBehaviour
 
     void MoneyUpdate(float money)
     {
-        manaSlider.SetValueOverTime(money, 0.2f);
+        manaSlider.SetValue(money);
         manaValue.text = money + " / " + ClientMoneyController.singleton.MaxValue;
     }
 
     private void UpdateInformation()
     {
         manaSlider.SetMaxValue(ClientMoneyController.singleton.MaxValue);
-        manaSlider.SetValue(ClientMoneyController.singleton.Money);
+        MoneyUpdate(ClientMoneyController.singleton.Money);
         ClientMoneyController.singleton.UpdatedMoney += new ClientMoneyController.MoneyUpdateHandler(MoneyUpdate);
     }
 
