@@ -42,7 +42,7 @@ public class PlayerController : Character
         private bool IsGrounded;
         private bool CanJump;
 
-    [SyncVar]
+    [SyncVar(hook = nameof(UpdateUsernameText))]
     private string username;
     public TMP_Text usernameText;
 
@@ -77,12 +77,9 @@ public class PlayerController : Character
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            username = SteamFriends.GetPersonaName();
-
-            Debug.Log(username);
-
-            SetUsernameText(username);
+            SetUsername(SteamFriends.GetPersonaName());
         }
+
     }
 
     private void OnEnable()
@@ -247,9 +244,14 @@ public class PlayerController : Character
     }
 
     [Command(requiresAuthority = false)]
-    private void SetUsernameText(string username)
+    private void SetUsername(string newName)
     {
-        usernameText.text = username;
+        username = newName;
+    }
+
+    private void UpdateUsernameText(string oldUsername, string newUsername)
+    {
+        usernameText.text = newUsername;
     }
 
 }
