@@ -48,10 +48,10 @@ public class TowerBuildingController : MonoBehaviour
     private void StartBuilding()
     {
         materialChanger.ChangeMaterial(BuildingMaterial);
-        materialChanger.ChangeOpaquicity(1, tower.BuildTime * MapController.singleton.BuildTimeMultiplier);
+        materialChanger.ChangeOpaquicity(1, tower.BuildTime);
         progressionSlider.SetMaxValue(tower.MaxHealth);
         progressionSlider.SetValue(0);
-        progressionSlider.SetValueOverTime(tower.MaxHealth, tower.BuildTime * MapController.singleton.BuildTimeMultiplier);
+        progressionSlider.SetValueOverTime(tower.MaxHealth, tower.BuildTime);
     }
 
     private void SetObjectsState(bool isEnabled)

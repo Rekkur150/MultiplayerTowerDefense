@@ -150,9 +150,7 @@ public class TowerPlacerController : NetworkBehaviour
     private void StartedBuilding(TowerInterface tower)
     {
         BuildingProgressSlider.gameObject.SetActive(true);
-        BuildingProgressSlider.SetMaxValue(tower.tower.MaxHealth);
-        BuildingProgressSlider.SetValue(0f);
-        BuildingProgressSlider.SetValueOverTime(tower.tower.MaxHealth, tower.tower.BuildTime * MapController.singleton.BuildTimeMultiplier);
+        BuildingProgressSlider.SetValueOverTime(1f, tower.tower.BuildTime);
     }
 
     private void FinishedBuilding(TowerInterface tower)
