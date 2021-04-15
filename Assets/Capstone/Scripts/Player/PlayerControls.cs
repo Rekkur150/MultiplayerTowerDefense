@@ -37,12 +37,17 @@ public class PlayerControls : NetworkBehaviour
             PlayerInterfaceState(PlayerTowerInteraction.State.Repairing);
         }
 
-/*        if (playerInterface.GetState() == PlayerInterface.State.Selecting)
+        if (Input.GetButtonDown("ReadyUp"))
         {
-            if (Input.GetButtonDown("Tower1") || Input.GetButtonDown("Tower2") || Input.GetButtonDown("Tower3") || Input.GetButtonDown("Tower4") || Input.GetButtonDown("Tower5"))
-                playerInterface.SetState(PlayerInterface.State.Default);
+                WaveManager.singleton.ToggleReadyPlayer();
+        }
 
-        }*/
+        /*        if (playerInterface.GetState() == PlayerInterface.State.Selecting)
+                {
+                    if (Input.GetButtonDown("Tower1") || Input.GetButtonDown("Tower2") || Input.GetButtonDown("Tower3") || Input.GetButtonDown("Tower4") || Input.GetButtonDown("Tower5"))
+                        playerInterface.SetState(PlayerInterface.State.Default);
+
+                }*/
 
     }
 

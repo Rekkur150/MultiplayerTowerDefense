@@ -16,7 +16,7 @@ public class WaveManager : NetworkBehaviour
     [SyncVar]
     public bool isWaveActive = false;
 
-    public int numberOfReadyPlayers = 0;
+    private List<NetworkConnectionToClient> ReadyNetworkIdentities = new List<NetworkConnectionToClient>();
 
     private List<GameObject> currentWaveEnemies = new List<GameObject>();
     private List<bool> SpawnPointsDoneSpawning = new List<bool>();
@@ -34,16 +34,18 @@ public class WaveManager : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    public void ReadyPlayer()
+    public void ToggleReadyPlayer(NetworkConnectionToClient conn = null)
     {
-        numberOfReadyPlayers++;
-        CheckIfReady();
-    }
+        if (conn == null)
+            return;
 
-    [Command(requiresAuthority = false)]
-    public void UnreadyPlayer()
-    {
-        numberOfReadyPlayers--;
+        if (ReadyNetworkIdentities.Contains(conn))
+            ReadyNetworkIdentities.Remove(conn);
+        else
+        {
+            ReadyNetworkIdentities.Add(conn);
+            CheckIfReady();
+        }
     }
 
     [ServerCallback]
@@ -52,14 +54,14 @@ public class WaveManager : NetworkBehaviour
         if (isWaveActive)
             return;
 
-        if (numberOfReadyPlayers >= NetworkManagerTD.singleton.numPlayers)
+        if (ReadyNetworkIdentities.Count >= NetworkManagerTD.singleton.numPlayers)
         {
             Debug.Log("Starting wave");
             StartWave(currentWave);
         }
         else
         {
-            Debug.Log(numberOfReadyPlayers + " ready out of " + NetworkManagerTD.singleton.numPlayers + " Players");
+            Debug.Log(ReadyNetworkIdentities.Count + " ready out of " + NetworkManagerTD.singleton.numPlayers + " Players");
         }
     }
 
@@ -119,6 +121,21 @@ public class WaveManager : NetworkBehaviour
     private void WaveFinished()
     {
         isWaveActive = false;
+    }
+
+    [ServerCallback]
+    public void AddPlayer(NetworkConnection conn)
+    {
+
+    }
+
+    [ServerCallback]
+    public void RemovePlayer(NetworkConnection conn)
+    {
+        if (ReadyNetworkIdentities.Exists(item => item.connectionId == conn.connectionId))
+        {
+            ReadyNetworkIdentities.RemoveAll(item => item.connectionId == conn.connectionId);
+        }
     }
    
 }
