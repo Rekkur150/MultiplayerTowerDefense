@@ -42,7 +42,9 @@ public class AreaFinder : MonoBehaviour
 
     protected void OnTriggerEnter(Collider other)
     {
-        if (other.tag == TargetTag && other.TryGetComponent(out Character character))
+        GameObject rootGameObject = GetRootCharacter(other);
+
+        if (rootGameObject.tag == TargetTag && rootGameObject.TryGetComponent(out Character character))
         {
             if (TargetCharacters.Contains(character))
                 return;
@@ -53,7 +55,9 @@ public class AreaFinder : MonoBehaviour
 
     protected void OnTriggerExit(Collider other)
     {
-        if (other.tag == TargetTag && other.TryGetComponent(out Character character))
+        GameObject rootGameObject = GetRootCharacter(other);
+
+        if (rootGameObject.tag == TargetTag && rootGameObject.TryGetComponent(out Character character))
         {
             TargetCharacters.Remove(character);
         }
@@ -116,5 +120,17 @@ public class AreaFinder : MonoBehaviour
         }
 
         return closest;
+    }
+
+    private GameObject GetRootCharacter(Collider other)
+    {
+        Transform current = other.transform;
+
+        while (current.parent != null)
+        {
+            current = current.parent;
+        }
+
+        return current.gameObject;
     }
 }

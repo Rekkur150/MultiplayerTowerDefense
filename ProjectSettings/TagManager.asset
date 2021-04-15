@@ -5,7 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Goal
-  - WaveManager
+  - Tower
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - 
   - Tower
   - 
-  - 
+  - Enemy
   - 
   - 
   - 
