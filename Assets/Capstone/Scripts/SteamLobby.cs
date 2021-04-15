@@ -14,6 +14,8 @@ public class SteamLobby : MonoBehaviour
 
     private NetworkManager networkManager;
 
+    public static CSteamID LobbyID { get; private set; }
+
     private void Start()
     {
         networkManager = GetComponent<NetworkManager>();
@@ -39,6 +41,8 @@ public class SteamLobby : MonoBehaviour
             buttons.SetActive(true);
             return;
         }
+
+        LobbyID = new CSteamID(callback.m_ulSteamIDLobby);
 
         networkManager.StartHost();
 

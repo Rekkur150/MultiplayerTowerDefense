@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System;
+using TMPro;
+using Steamworks;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : Character
@@ -40,6 +42,10 @@ public class PlayerController : Character
         private bool IsGrounded;
         private bool CanJump;
 
+    [SyncVar]
+    private string username;
+    public TMP_Text usernameText;
+
     [Header("Character Animation")]
         public Animator CharacterAnimator;
 
@@ -71,6 +77,11 @@ public class PlayerController : Character
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
+            username = SteamFriends.GetPersonaName();
+
+            Debug.Log(username);
+
+            SetUsernameText(username);
         }
     }
 
@@ -233,6 +244,12 @@ public class PlayerController : Character
     public class MyEventArgs : EventArgs
     {
 
+    }
+
+    [Command(requiresAuthority = false)]
+    private void SetUsernameText(string username)
+    {
+        usernameText.text = username;
     }
 
 }

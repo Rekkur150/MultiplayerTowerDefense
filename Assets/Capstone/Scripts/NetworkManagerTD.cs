@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Steamworks;
 
 public class NetworkManagerTD : NetworkManager
 {
@@ -11,10 +12,6 @@ public class NetworkManagerTD : NetworkManager
     {
         base.OnServerAddPlayer(conn);
 
-        //var player = conn.identity.GetComponent<PlayerController>();
-
-        //Players.Add(player);
-
         NetworkPlayerManager.singleton.AddPlayer(conn);
         WaveManager.singleton.AddPlayer(conn);
 
@@ -22,15 +19,6 @@ public class NetworkManagerTD : NetworkManager
 
     public override void OnServerDisconnect(NetworkConnection conn)
     {
-        /*        var player = conn.identity.GetComponent<PlayerController>();
-
-                if (player.isReady)
-                {
-                    player.isReady = false;
-                }
-        */
-        //Players.Remove(player);
-
         NetworkPlayerManager.singleton.RemovePlayer(conn);
         WaveManager.singleton.RemovePlayer(conn);
 
