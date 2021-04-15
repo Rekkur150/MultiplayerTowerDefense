@@ -28,6 +28,9 @@ public class EnemyController : Character
         if (Animator == null)
             Debug.LogWarning("No Animator on this object!", this);
 
+        if (damageObject == null)
+            Debug.LogWarning("No damage Object on this object!", this);
+
         FindGoal();
     }
 

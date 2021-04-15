@@ -1960,7 +1960,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20.1
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2203,7 +2203,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16.8
+  m_fontSize: 20
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2280,6 +2280,10 @@ PrefabInstance:
       propertyPath: sceneId
       value: 3337576709
       objectReference: {fileID: 0}
+    - target: {fileID: 8158006845841375095, guid: 02a796cd5e4e21c48b64de3fc320e443, type: 3}
+      propertyPath: damageObject
+      value: 
+      objectReference: {fileID: 1233235831}
     - target: {fileID: 8158006845841375098, guid: 02a796cd5e4e21c48b64de3fc320e443, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -3059,7 +3063,6 @@ MonoBehaviour:
         NumberOfEnemies: 5
         TimeBetweenEnemySpawn: 10
   isWaveActive: 0
-  numberOfReadyPlayers: 0
 --- !u!114 &946111109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3294,7 +3297,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 17.35
+  m_fontSize: 29.5
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
