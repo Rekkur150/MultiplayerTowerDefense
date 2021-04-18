@@ -11,7 +11,7 @@ public class SceneChangeManager : MonoBehaviour
     public static SceneChangeManager singleton;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
         if (singleton == null)
@@ -20,6 +20,7 @@ public class SceneChangeManager : MonoBehaviour
         } else if (singleton != this)
         {
             Destroy(gameObject);
+            return;
         }
 
         if (loadingPanel == null)
@@ -31,12 +32,15 @@ public class SceneChangeManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         DontDestroyOnLoad(this);
+
     }
 
     private void ChangedActiveScene(Scene current, Scene next)
     {
+        Debug.Log(loadingPanel, this);
         loadingPanel.SetBool("IsFading", false);
         Debug.Log("Scene Changed!");
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)

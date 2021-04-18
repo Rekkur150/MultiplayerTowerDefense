@@ -16,7 +16,7 @@ public class SteamLobby : MonoBehaviour
 
     public static CSteamID LobbyID { get; private set; }
 
-    private void Start()
+    private void Awake()
     {
         networkManager = GetComponent<NetworkManager>();
 

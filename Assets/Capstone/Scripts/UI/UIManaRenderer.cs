@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Mirror;
 
 [RequireComponent(typeof(UISliderFloatIndicator))]
-public class UIManaRenderer : MonoBehaviour
+public class UIManaRenderer : NetworkBehaviour
 {
     public UISliderFloatIndicator manaSlider;
     public TextMeshProUGUI manaValue;
@@ -21,6 +22,11 @@ public class UIManaRenderer : MonoBehaviour
         StartCoroutine("WaitForClientMoneyController");
     }
 
+    public override void OnStartLocalPlayer()
+    {
+        UpdateInformation();
+    }
+
     void MoneyUpdate(float money)
     {
         manaSlider.SetValueOverTime(money, 0.2f);
@@ -30,7 +36,7 @@ public class UIManaRenderer : MonoBehaviour
     private void UpdateInformation()
     {
         manaSlider.SetMaxValue(ClientMoneyController.singleton.MaxValue);
-        manaSlider.SetValue(ClientMoneyController.singleton.Money);
+        MoneyUpdate(ClientMoneyController.singleton.Money);
         ClientMoneyController.singleton.UpdatedMoney += new ClientMoneyController.MoneyUpdateHandler(MoneyUpdate);
     }
 
@@ -40,6 +46,7 @@ public class UIManaRenderer : MonoBehaviour
         {
             if (ClientMoneyController.singleton != null)
             {
+                Debug.Log("Updated Information");
                 UpdateInformation();
                 break;
             }

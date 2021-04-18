@@ -4,7 +4,7 @@ using UnityEngine;
 using Mirror;
 
 [RequireComponent(typeof(PlayerInterface))]
-public class PlayerMenu : MonoBehaviour
+public class PlayerMenu : NetworkBehaviour
 {
     public PlayerInterface playerInterface;
     public GameObject menu;
@@ -38,7 +38,10 @@ public class PlayerMenu : MonoBehaviour
 
     public void Disconnect()
     {
-        NetworkManager.singleton.StopClient();
+        if (isServer)
+            NetworkManager.singleton.StopHost();
+        else
+            NetworkManager.singleton.StopClient();
     }
 
 
