@@ -32,6 +32,8 @@ public class EnemyController : Character
             Debug.LogWarning("No damage Object on this object!", this);
 
         FindGoal();
+
+        navAgent.stoppingDistance = .8f;
     }
 
     // Update is called once per frame
@@ -127,11 +129,21 @@ public class EnemyController : Character
         {
             Animator.SetBool("Attacking", true);
             damageObject.IsEnabled = true;
+            FaceTarget(target);
         }
         else
         {
             Animator.SetBool("Attacking", false);
             damageObject.IsEnabled = false;
         }
+    }
+
+    [ServerCallback]
+    private void FaceTarget(Vector3 target)
+    {
+        Vector3 lookPos = target - transform.position;
+        lookPos.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, .1f);
     }
 }
