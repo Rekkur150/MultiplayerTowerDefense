@@ -49,6 +49,7 @@ MonoBehaviour:
   TargetTags:
   - Player
   - Tower
+  - Goal
   EnterDamage: 5
   ExitDamage: 0
 --- !u!1 &4686106348395924678
@@ -208,7 +209,8 @@ MonoBehaviour:
   syncInterval: 0.1
   MaxHealth: 15
   CharacterCenter: {fileID: 3116471707153617649}
-  SpawnOnDestroy: []
+  SpawnOnDestroy:
+  - {fileID: 555661912749405231, guid: 82bb25056746d05448d1b1ff68ee140a, type: 3}
   playerFinder: {fileID: 5930276694477905997}
   towerFinder: {fileID: 335566117297828949}
   Animator: {fileID: 469861046165748475}

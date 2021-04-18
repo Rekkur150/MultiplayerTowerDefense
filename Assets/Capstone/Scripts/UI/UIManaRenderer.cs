@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Mirror;
 
 [RequireComponent(typeof(UISliderFloatIndicator))]
 public class UIManaRenderer : MonoBehaviour
@@ -30,7 +31,7 @@ public class UIManaRenderer : MonoBehaviour
     private void UpdateInformation()
     {
         manaSlider.SetMaxValue(ClientMoneyController.singleton.MaxValue);
-        manaSlider.SetValue(ClientMoneyController.singleton.Money);
+        MoneyUpdate(ClientMoneyController.singleton.Money);
         ClientMoneyController.singleton.UpdatedMoney += new ClientMoneyController.MoneyUpdateHandler(MoneyUpdate);
     }
 

@@ -1198,7 +1198,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76bac8db817269149828322170499979, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetTag: Player
+  TargetTag: Enemy
   CantSeeMask:
     serializedVersion: 2
     m_Bits: 9

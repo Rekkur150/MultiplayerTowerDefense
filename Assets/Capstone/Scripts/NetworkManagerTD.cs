@@ -6,7 +6,6 @@ using Steamworks;
 
 public class NetworkManagerTD : NetworkManager
 {
-    //public List<PlayerController> Players { get; } = new List<PlayerController>();
 
     public override void OnServerAddPlayer(NetworkConnection conn)
     {
