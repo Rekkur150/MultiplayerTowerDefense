@@ -5,7 +5,7 @@ using TMPro;
 using Mirror;
 
 [RequireComponent(typeof(UISliderFloatIndicator))]
-public class UIManaRenderer : NetworkBehaviour
+public class UIManaRenderer : MonoBehaviour
 {
     public UISliderFloatIndicator manaSlider;
     public TextMeshProUGUI manaValue;
@@ -20,11 +20,6 @@ public class UIManaRenderer : NetworkBehaviour
             Debug.LogError("No text area here", this);
 
         StartCoroutine("WaitForClientMoneyController");
-    }
-
-    public override void OnStartLocalPlayer()
-    {
-        UpdateInformation();
     }
 
     void MoneyUpdate(float money)
@@ -46,7 +41,6 @@ public class UIManaRenderer : NetworkBehaviour
         {
             if (ClientMoneyController.singleton != null)
             {
-                Debug.Log("Updated Information");
                 UpdateInformation();
                 break;
             }

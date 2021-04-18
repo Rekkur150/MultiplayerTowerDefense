@@ -29,6 +29,11 @@ public class ClientMoneyController : NetworkBehaviour
         SetMoney(DefaultMoney);
     }
 
+    public override void OnStartClient()
+    {
+        MoneyUpdate(Money, Money);
+    }
+
 
     [ServerCallback]
     public void SetMoney(float money)
