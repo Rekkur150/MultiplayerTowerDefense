@@ -32,6 +32,8 @@ public class EnemyController : Character
             Debug.LogWarning("No damage Object on this object!", this);
 
         FindGoal();
+
+        navAgent.stoppingDistance = .8f;
     }
 
     // Update is called once per frame
@@ -134,9 +136,9 @@ public class EnemyController : Character
     }
 
     [ServerCallback]
-    private void FaceTarget(Vector3 destination)
+    private void FaceTarget(Vector3 target)
     {
-        Vector3 lookPos = destination - transform.position;
+        Vector3 lookPos = target - transform.position;
         lookPos.y = 0;
         Quaternion rotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, .1f);
