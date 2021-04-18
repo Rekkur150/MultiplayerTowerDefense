@@ -42,12 +42,10 @@ public class PlayerControls : NetworkBehaviour
                 WaveManager.singleton.ToggleReadyPlayer();
         }
 
-        /*        if (playerInterface.GetState() == PlayerInterface.State.Selecting)
-                {
-                    if (Input.GetButtonDown("Tower1") || Input.GetButtonDown("Tower2") || Input.GetButtonDown("Tower3") || Input.GetButtonDown("Tower4") || Input.GetButtonDown("Tower5"))
-                        playerInterface.SetState(PlayerInterface.State.Default);
-
-                }*/
+        if (Input.GetButtonDown("Menu"))
+        {
+            playerInterface.SetState(PlayerInterface.State.Menu);
+        }
 
     }
 

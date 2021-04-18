@@ -47,12 +47,20 @@ public class PlayerTowerInteraction : NetworkBehaviour
         switch (newState)
         {
             case State.Deleting:
+                playerInterface.stateText.text = "Deleting";
                 selectTowerController.ChangeHighlightMaterial(DeleteMaterial);
                 break;
             case State.Repairing:
+                playerInterface.stateText.text = "Repairing";
                 selectTowerController.ChangeHighlightMaterial(RepairMaterial);
                 break;
         }
+    }
+
+    private void OnDisable()
+    {
+        Debug.Log("On disabled");
+        CancelRepairTower();
     }
 
     private void StateChanged()
@@ -77,6 +85,7 @@ public class PlayerTowerInteraction : NetworkBehaviour
 
         if (Input.GetButtonDown("Fire1"))
             DoAction();
+
     }
 
     public void DoAction()
@@ -130,11 +139,11 @@ public class PlayerTowerInteraction : NetworkBehaviour
     [Command]
     private void ServerRepairTower(TowerInterface tower, NetworkConnectionToClient conn = null)
     {
-        if (tower == null)
-            return;
+        if (tower == null || tower.GetState() != TowerInterface.State.Default)
+            ClientFinishedOrCanceledRepairingTower();
 
         Repairing = ServerRepairingTower(tower);
-
+        StartCoroutine(Repairing);
 
     }
 
@@ -153,7 +162,7 @@ public class PlayerTowerInteraction : NetworkBehaviour
             tower.tower.Damage(-Difference);
             ClientMoneyController.singleton.RemoveMoney(ManaPerHealth * Difference);
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.1f * MapController.singleton.BuildTimeMultiplier);
 
         }
 
@@ -162,8 +171,12 @@ public class PlayerTowerInteraction : NetworkBehaviour
     }
 
     [Command]
-    private void CancelRepairTower()
+    private void CancelRepairTower(NetworkConnectionToClient conn = null)
     {
+
+        if (conn == null)
+            return;
+
         if (Repairing != null)
             StopCoroutine(Repairing);
 
@@ -173,7 +186,8 @@ public class PlayerTowerInteraction : NetworkBehaviour
     [TargetRpc]
     private void ClientFinishedOrCanceledRepairingTower()
     {
-        playerInterface.SetState(PlayerInterface.State.Interacting);
+        if (playerInterface.GetState() == PlayerInterface.State.Interacting)
+            playerInterface.SetState(PlayerInterface.State.Selecting);
     }
 
     
