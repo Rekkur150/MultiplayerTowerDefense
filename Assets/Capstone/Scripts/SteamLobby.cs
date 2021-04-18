@@ -29,8 +29,6 @@ public class SteamLobby : MonoBehaviour
 
     public void HostLobby()
     {
-        buttons.SetActive(false);
-
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);
     }
 
@@ -67,5 +65,15 @@ public class SteamLobby : MonoBehaviour
         networkManager.StartClient();
 
         buttons.SetActive(false);
+    }
+
+    public void InviteFriends()
+    {
+        SteamFriends.ActivateGameOverlayInviteDialog(LobbyID);
+    }
+
+    public void JoinFriend()
+    {
+        SteamFriends.ActivateGameOverlay("Friends");
     }
 }
