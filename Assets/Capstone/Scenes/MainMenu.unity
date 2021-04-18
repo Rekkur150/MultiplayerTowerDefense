@@ -11600,10 +11600,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1581236324}
-  - component: {fileID: 1581236323}
   - component: {fileID: 1581236322}
   - component: {fileID: 1581236321}
   - component: {fileID: 1581236320}
+  - component: {fileID: 1581236323}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -11625,7 +11625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Channels: 0200000001000000
   Timeout: 25
-  SteamAppID: 0
+  SteamAppID: 480
   AllowSteamRelay: 1
   SteamUserID: 0
 --- !u!114 &1581236321
@@ -11662,7 +11662,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1581236319}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8aab4c8111b7c411b9b92cf3dbc5bd4e, type: 3}
+  m_Script: {fileID: 11500000, guid: 60f0dacdd97692446914ddf39c2305df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
