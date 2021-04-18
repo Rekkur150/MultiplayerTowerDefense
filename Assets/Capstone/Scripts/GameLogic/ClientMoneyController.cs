@@ -6,6 +6,7 @@ public class ClientMoneyController : NetworkBehaviour
 {
     [SyncVar(hook = nameof(MoneyUpdate))]
     public float Money = 100f;
+    public float DefaultMoney = 500f;
     public float MaxValue = 1000f;
 
     static public ClientMoneyController singleton;
@@ -20,6 +21,17 @@ public class ClientMoneyController : NetworkBehaviour
         {
             Destroy(this);
         }
+    }
+
+    [ServerCallback]
+    private void Start()
+    {
+        SetMoney(DefaultMoney);
+    }
+
+    public override void OnStartClient()
+    {
+        MoneyUpdate(Money, Money);
     }
 
 

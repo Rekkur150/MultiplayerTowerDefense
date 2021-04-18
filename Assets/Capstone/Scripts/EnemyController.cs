@@ -116,6 +116,9 @@ public class EnemyController : Character
     [ServerCallback]
     protected override void Died()
     {
+        WaveManager.singleton.currentWaveEnemies.Remove(gameObject);
+        WaveManager.singleton.isFinishedSpawning();
+
         ServerDestroy();
     }
 
