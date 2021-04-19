@@ -46,9 +46,9 @@ public class PlayerMenu : NetworkBehaviour
         playerInterface.SetState(PlayerInterface.State.Default);
     }
 
-    public void SwitchLevel(int scene)
+    public void SwitchLevel(string scene)
     {
-        NetworkManager.singleton.ServerChangeScene(SceneManager.GetSceneByBuildIndex(scene).name);
+        NetworkManager.singleton.ServerChangeScene(scene);
     }
 
     public void Disconnect()
