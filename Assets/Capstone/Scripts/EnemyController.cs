@@ -14,6 +14,8 @@ public class EnemyController : Character
     public Animator Animator;
     public DamageObject damageObject;
 
+    public float ManaDroppedOnDeath = 0;
+
     private NavMeshAgent navAgent;
     private Vector3 target;
     private Vector3 goal;
@@ -118,6 +120,10 @@ public class EnemyController : Character
     {
         WaveManager.singleton.currentWaveEnemies.Remove(gameObject);
         WaveManager.singleton.isFinishedSpawning();
+
+
+        if (ManaDroppedOnDeath > 0)
+            ManaDropper.singleton.SpawnMana(ManaDroppedOnDeath, transform);
 
         ServerDestroy();
     }

@@ -16,6 +16,8 @@ public class WaveManager : NetworkBehaviour
     [SyncVar]
     public bool isWaveActive = false;
 
+    private bool preparingWave = false;
+
     private List<NetworkConnectionToClient> ReadyNetworkIdentities = new List<NetworkConnectionToClient>();
 
     public List<GameObject> currentWaveEnemies = new List<GameObject>();
@@ -37,7 +39,7 @@ public class WaveManager : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void ToggleReadyPlayer(NetworkConnectionToClient conn = null)
     {
-        if (conn == null)
+        if (conn == null || preparingWave || isWaveActive)
             return;
 
         if (ReadyNetworkIdentities.Contains(conn))
@@ -62,7 +64,7 @@ public class WaveManager : NetworkBehaviour
     [ServerCallback]
     public void CheckIfReady()
     {
-        if (isWaveActive)
+        if (isWaveActive || preparingWave)
             return;
 
         if (ReadyNetworkIdentities.Count >= NetworkManagerTD.singleton.numPlayers)
@@ -93,8 +95,10 @@ public class WaveManager : NetworkBehaviour
     [ServerCallback]
     private IEnumerator ServerStartingWave()
     {
+        preparingWave = true;
         yield return new WaitForSeconds(10f);
         StartWave(currentWave);
+        preparingWave = false;
     }
 
     [ServerCallback]
