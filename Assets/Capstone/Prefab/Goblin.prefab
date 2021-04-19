@@ -253,6 +253,8 @@ MonoBehaviour:
   playerFinder: {fileID: 8400443329268849180}
   towerFinder: {fileID: 2481736366422822404}
   Animator: {fileID: 2332167144159838378}
+  damageObject: {fileID: 0}
+  ManaDroppedOnDeath: 0
 --- !u!114 &8158006845841375096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,6 +564,10 @@ PrefabInstance:
     - target: {fileID: 4023663240296635728, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
       propertyPath: m_Layer
       value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4039022864529267377, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4161881649960760795, guid: 631399fa263ddef4db1e16d9ab488cd1, type: 3}
       propertyPath: m_Layer
