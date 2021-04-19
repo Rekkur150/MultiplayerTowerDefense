@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using TMPro;
 
 [RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(TowerPlacer))]
 [RequireComponent(typeof(TowerPlacerController))]
 [RequireComponent(typeof(SelectTowerController))]
 [RequireComponent(typeof(PlayerTowerInteraction))]
+[RequireComponent(typeof(PlayerMenu))]
 public class PlayerInterface : NetworkBehaviour
 {
     public enum State
@@ -16,6 +18,7 @@ public class PlayerInterface : NetworkBehaviour
         Disabled,
         Interacting,
         Selecting,
+        Menu,
     }
 
     public PlayerController playerController;
@@ -23,6 +26,10 @@ public class PlayerInterface : NetworkBehaviour
     public TowerPlacerController towerPlacerController;
     public SelectTowerController selectTowerController;
     public PlayerTowerInteraction playerTowerInteraction;
+    public PlayerMenu playerMenu;
+
+    public TextMeshProUGUI stateText;
+
     private State currentState = State.Default;
 
     // Start is called before the first frame update
@@ -42,6 +49,9 @@ public class PlayerInterface : NetworkBehaviour
 
         if (TryGetComponent(out PlayerTowerInteraction playerTowerInteraction))
             this.playerTowerInteraction = playerTowerInteraction;
+
+        if (TryGetComponent(out PlayerMenu playerMenu))
+            this.playerMenu = playerMenu;
 
         playerController.OnDeath += new PlayerController.MyEventHandler(OnDeath);
 
@@ -66,6 +76,9 @@ public class PlayerInterface : NetworkBehaviour
             case State.Selecting:
                 StateChangeToSelecting();
                 break;
+            case State.Menu:
+                StateChangeToMenu();
+                break;
         }
     }
 
@@ -85,6 +98,9 @@ public class PlayerInterface : NetworkBehaviour
             case State.Selecting:
                 StateResetSelecting();
                 break;
+            case State.Menu:
+                StateResetMenu();
+                break;
         }
     }
 
@@ -92,6 +108,7 @@ public class PlayerInterface : NetworkBehaviour
     {
         playerController.CanPlayerControlCharacter = true;
         towerPlacerController.enabled = true;
+        selectTowerController.enabled = false;
     }
     private void StateResetDefault()
     {
@@ -131,10 +148,32 @@ public class PlayerInterface : NetworkBehaviour
     private void StateResetSelecting()
     {
         towerPlacerController.enabled = true;
-        selectTowerController.enabled = false;
+        
         playerController.CanPlayerControlCharacter = true;
         playerController.CharacterAnimator.SetBool("Interacting", false);
     }
+
+    private void StateChangeToMenu()
+    {
+        towerPlacer.ClientCancelSpawning();
+        playerController.CanPlayerControlCharacter = true;
+        towerPlacerController.enabled = false;
+        selectTowerController.enabled = false;
+        playerTowerInteraction.enabled = false;
+        playerMenu.enabled = true;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+    }
+
+    private void StateResetMenu()
+    {
+        playerTowerInteraction.enabled = true;
+        playerMenu.enabled = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
 
     public State GetState()
     {

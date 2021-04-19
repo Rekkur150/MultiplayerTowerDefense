@@ -45,6 +45,7 @@ public class SelectTowerController : NetworkBehaviour
 
     private void OnDisable()
     {
+        playerInterface.stateText.text = "";
         ResetTowerSelect();
     }
 

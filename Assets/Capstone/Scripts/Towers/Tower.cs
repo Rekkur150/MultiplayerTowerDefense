@@ -121,5 +121,11 @@ public class Tower : Character
         ManaDropper.singleton.SpawnMana(Cost * refundPercentage, transform);
     }
 
+    [ServerCallback]
+    protected override void Died()
+    {
+        ServerDestroy();
+    }
+
 
 }

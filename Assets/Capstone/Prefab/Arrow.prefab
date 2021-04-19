@@ -5043,7 +5043,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   DestroyOnCharacterHit: 1
-  TargetTag: Player
+  TargetTag: Enemy
 --- !u!114 &2095270951616154932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5059,6 +5059,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   IsEnabled: 1
-  TargetTag: Player
+  TargetTags:
+  - Enemy
   EnterDamage: 5
   ExitDamage: 0

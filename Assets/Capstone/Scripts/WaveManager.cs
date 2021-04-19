@@ -16,10 +16,11 @@ public class WaveManager : NetworkBehaviour
     [SyncVar]
     public bool isWaveActive = false;
 
-    public int numberOfReadyPlayers = 0;
+    private List<NetworkConnectionToClient> ReadyNetworkIdentities = new List<NetworkConnectionToClient>();
 
-    private List<GameObject> currentWaveEnemies = new List<GameObject>();
-    private List<bool> SpawnPointsDoneSpawning = new List<bool>();
+    public List<GameObject> currentWaveEnemies = new List<GameObject>();
+    private float NumberOfEnemiesSpawning = 0;
+    private float NumberOfEnemiesThatDied = 0;
 
     private void Awake()
     {
@@ -34,16 +35,28 @@ public class WaveManager : NetworkBehaviour
     }
 
     [Command(requiresAuthority = false)]
-    public void ReadyPlayer()
+    public void ToggleReadyPlayer(NetworkConnectionToClient conn = null)
     {
-        numberOfReadyPlayers++;
-        CheckIfReady();
+        if (conn == null)
+            return;
+
+        if (ReadyNetworkIdentities.Contains(conn))
+            ReadyNetworkIdentities.Remove(conn);
+        else
+        {
+            ReadyNetworkIdentities.Add(conn);
+            CheckIfReady();
+        }
+
+        if (currentWave < waves.Count && !isWaveActive)
+            UpdatePlayerInformationPanel("The wave is complete press G to ready up! " + ReadyNetworkIdentities.Count + "/" + NetworkManagerTD.singleton.numPlayers);
     }
 
-    [Command(requiresAuthority = false)]
-    public void UnreadyPlayer()
+
+    [ClientRpc]
+    private void UpdatePlayerInformationPanel(string text)
     {
-        numberOfReadyPlayers--;
+        PlayerInformationPanel.singleton.UpdateText(text);
     }
 
     [ServerCallback]
@@ -52,15 +65,36 @@ public class WaveManager : NetworkBehaviour
         if (isWaveActive)
             return;
 
-        if (numberOfReadyPlayers >= NetworkManagerTD.singleton.numPlayers)
+        if (ReadyNetworkIdentities.Count >= NetworkManagerTD.singleton.numPlayers)
         {
-            Debug.Log("Starting wave");
-            StartWave(currentWave);
+            StartClientCountDown();
+            StartCoroutine(ServerStartingWave());
         }
-        else
+    }
+
+    [ClientRpc]
+    private void StartClientCountDown()
+    {
+        StartCoroutine(ClientStartingWave());
+    }
+
+    [ClientCallback]
+    private IEnumerator ClientStartingWave()
+    {
+        for (int i = 10; i >= 0; i--)
         {
-            Debug.Log(numberOfReadyPlayers + " ready out of " + NetworkManagerTD.singleton.numPlayers + " Players");
-        }
+            PlayerInformationPanel.singleton.UpdateText("Starting wave in " + i);
+            yield return new WaitForSeconds(1f);
+       }
+
+        PlayerInformationPanel.singleton.UpdateText("");
+    }
+    
+    [ServerCallback]
+    private IEnumerator ServerStartingWave()
+    {
+        yield return new WaitForSeconds(10f);
+        StartWave(currentWave);
     }
 
     [ServerCallback]
@@ -70,13 +104,31 @@ public class WaveManager : NetworkBehaviour
         if (waveIndex >= waves.Count || waves[waveIndex] == null)
             return;
 
+        if (OnWaveStarted != null)
+            OnWaveStarted(this);
+
+
         isWaveActive = true;
-        SpawnPointsDoneSpawning.Clear();
+
+        NumberOfEnemiesSpawning = 0;
+        NumberOfEnemiesThatDied = 0;
+
+
+        foreach (Wave wave in waves)
+        {
+
+            for (int i = 0; i < wave.EnemySpawns.Count; i++)
+            {
+                for (int x = 0; x < wave.EnemySpawns[i].spawning.Count; x++)
+                {
+                    NumberOfEnemiesSpawning += wave.EnemySpawns[i].spawning[x].NumberOfEnemies;
+                }
+            }
+        }
 
         for (int i = 0; i < waves[waveIndex].EnemySpawns.Count; i++)
         {
             StartCoroutine(StartSpawningFromEnemySpawn(waves[waveIndex].EnemySpawns[i], i));
-            SpawnPointsDoneSpawning.Add(false);
         }
     }
 
@@ -94,31 +146,65 @@ public class WaveManager : NetworkBehaviour
                 newEnemy.transform.position = enemySpawn.spawnPoint.position;
 
                 NetworkServer.Spawn(newEnemy);
+                currentWaveEnemies.Add(newEnemy);
 
                 yield return new WaitForSeconds(spawnInfo.TimeBetweenEnemySpawn);
             }
         }
-
-        SpawnPointsDoneSpawning[index] = true;
-        isFinishedSpawning();
     }
 
     [ServerCallback]
-    private void isFinishedSpawning()
+    public void isFinishedSpawning()
     {
-        foreach (bool done in SpawnPointsDoneSpawning)
-        {
-            if (done == false)
-                return;
-        }
+        NumberOfEnemiesThatDied++;
 
-        WaveFinished();
+        if (NumberOfEnemiesThatDied >= NumberOfEnemiesSpawning)
+        {
+            WaveFinished();
+        }
     }
 
     [ServerCallback]
     private void WaveFinished()
     {
         isWaveActive = false;
+        currentWave++;
+
+        if (OnWaveEnded != null)
+            OnWaveEnded(this);
+
+        if (currentWave >= waves.Count)
+            MapController.singleton.ServerMapComplete();
+
+        else
+            UpdatePlayerInformationPanel("The wave is complete press G to ready up! " + ReadyNetworkIdentities.Count + "/" + NetworkManagerTD.singleton.numPlayers);
+
     }
+
+
+
+
+    [ServerCallback]
+    public void AddPlayer(NetworkConnection conn)
+    {
+        if (currentWave < waves.Count && !isWaveActive)
+            UpdatePlayerInformationPanel("The wave is complete press G to ready up! " + ReadyNetworkIdentities.Count + "/" + NetworkManagerTD.singleton.numPlayers);
+    }
+
+    [ServerCallback]
+    public void RemovePlayer(NetworkConnection conn)
+    {
+        if (ReadyNetworkIdentities.Exists(item => item.connectionId == conn.connectionId))
+        {
+            ReadyNetworkIdentities.RemoveAll(item => item.connectionId == conn.connectionId);
+        }
+
+        UpdatePlayerInformationPanel("The wave is complete press G to ready up! " + ReadyNetworkIdentities.Count + "/" + NetworkManagerTD.singleton.numPlayers);
+    }
+
+
+    public delegate void WaveManagerEventHandler(WaveManager manager);
+    public event WaveManagerEventHandler OnWaveStarted;
+    public event WaveManagerEventHandler OnWaveEnded;
    
 }
