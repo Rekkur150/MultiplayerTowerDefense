@@ -18,9 +18,6 @@ public class Projectile : ServerObject
     [Tooltip("Destroy projectile if it hits a character")]
     public bool DestroyOnCharacterHit = true;
 
-    [Tooltip("The damage that is applied when the projectile hits and is destroyed. No damage object needed")]
-    public float DamageWhenCharacterHit = 5f;
-
     [Tooltip("Destoryu the projectile when it hits terrain")]
     public bool DestoryWhenColliding = true;
 
@@ -55,11 +52,10 @@ public class Projectile : ServerObject
 
         GameObject parent = GetRootCharacter(other);
 
-        if (DestroyOnCharacterHit && TargetTags.Contains(parent.tag))
+        if (DestroyOnCharacterHit && TargetTags.Contains(other.tag) && TargetTags.Contains(parent.tag))
         {
             if (parent.TryGetComponent(out Character character))
             {
-                character.Damage(DamageWhenCharacterHit);
 
                 ServerDestroy();
             }

@@ -5057,12 +5057,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  Speed: 10
+  Speed: 20
   CollisionMask:
     serializedVersion: 2
     m_Bits: 9
   DestroyOnCharacterHit: 1
-  DamageWhenCharacterHit: 5
   DestoryWhenColliding: 1
   TargetTags:
   - Enemy

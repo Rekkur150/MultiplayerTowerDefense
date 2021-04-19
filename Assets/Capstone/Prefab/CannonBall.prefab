@@ -166,11 +166,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  Speed: 2
+  Speed: 10
   CollisionMask:
     serializedVersion: 2
     m_Bits: 9
   DestroyOnCharacterHit: 0
+  DamageWhenCharacterHit: 5
   DestoryWhenColliding: 0
   TargetTags:
   - Enemy

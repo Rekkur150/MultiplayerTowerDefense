@@ -804,6 +804,7 @@ MonoBehaviour:
   BehavioursDisableOnTowerNonFunctional:
   - {fileID: 919132147622465361}
   - {fileID: 844127700349848164}
+  - {fileID: 1089446497925312578}
   RateOfFire: 0.25
   DamagePerAttack: 0.25
 --- !u!114 &919132147622465361

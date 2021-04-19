@@ -379,7 +379,8 @@ MonoBehaviour:
   AreaFinder: {fileID: 6469960296031165497}
   GameObjectDisableOnTowerNonFunctional:
   - {fileID: 5974709751645939033}
-  BehavioursDisableOnTowerNonFunctional: []
+  BehavioursDisableOnTowerNonFunctional:
+  - {fileID: 7739037250380603689}
   RateOfFire: 0
   DamagePerAttack: 0
 --- !u!114 &8310797349726011223

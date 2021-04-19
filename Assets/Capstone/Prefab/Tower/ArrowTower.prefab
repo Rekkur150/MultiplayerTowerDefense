@@ -136,7 +136,8 @@ MonoBehaviour:
   AreaFinder: {fileID: 5530648143629440707}
   GameObjectDisableOnTowerNonFunctional:
   - {fileID: 7364340128543562580}
-  BehavioursDisableOnTowerNonFunctional: []
+  BehavioursDisableOnTowerNonFunctional:
+  - {fileID: -3194199708178640476}
   RateOfFire: 5
   Projectile: {fileID: 8934214757459350803, guid: 6e271d7270e1053428d141edab8166e4, type: 3}
   ProjectileSpawnLocation: {fileID: 6683572718557231303}
