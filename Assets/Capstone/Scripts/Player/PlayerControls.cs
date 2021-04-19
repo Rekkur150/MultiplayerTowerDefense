@@ -34,15 +34,18 @@ public class PlayerControls : NetworkBehaviour
 
         if (Input.GetButtonDown("TowerUpgrade"))
         {
-            PlayerInterfaceState(PlayerTowerInteraction.State.Upgrading);
+            PlayerInterfaceState(PlayerTowerInteraction.State.Repairing);
         }
 
-/*        if (playerInterface.GetState() == PlayerInterface.State.Selecting)
+        if (Input.GetButtonDown("ReadyUp"))
         {
-            if (Input.GetButtonDown("Tower1") || Input.GetButtonDown("Tower2") || Input.GetButtonDown("Tower3") || Input.GetButtonDown("Tower4") || Input.GetButtonDown("Tower5"))
-                playerInterface.SetState(PlayerInterface.State.Default);
+                WaveManager.singleton.ToggleReadyPlayer();
+        }
 
-        }*/
+        if (Input.GetButtonDown("Menu"))
+        {
+            playerInterface.SetState(PlayerInterface.State.Menu);
+        }
 
     }
 

@@ -65,6 +65,8 @@ public class TowerPlacer : NetworkBehaviour
         if (PlayerPreplacedTowers.Count == 0)
             return;
 
+        playerInterface.stateText.text = "";
+
         if (OnCancelingBuildingATower != null)
             OnCancelingBuildingATower(default);
 
@@ -79,6 +81,7 @@ public class TowerPlacer : NetworkBehaviour
         if (PlayerPreplacedTowers.Count > 0)
             return;
 
+        playerInterface.stateText.text = "Building";
         SpawnDisabledTower(towerPrefabIndex);
 
     }
