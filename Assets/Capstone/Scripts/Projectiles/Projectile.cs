@@ -18,14 +18,20 @@ public class Projectile : ServerObject
     [Tooltip("Destroy projectile if it hits a character")]
     public bool DestroyOnCharacterHit = true;
 
+    [Tooltip("The damage that is applied when the projectile hits and is destroyed. No damage object needed")]
+    public float DamageWhenCharacterHit = 5f;
+
+    [Tooltip("Destoryu the projectile when it hits terrain")]
+    public bool DestoryWhenColliding = true;
+
     [Tooltip("The tag this projectile will look when looking at hit characters in order to be destroyed")]
-    public string TargetTag;
+    public List<string> TargetTags = new List<string>();
 
     [Tooltip("The maximum time a projectile can last in seconds")]
     static private float MaxiumDuration = 10;
 
     [ServerCallback]
-    void Start()
+    protected void Start()
     {
         StartCoroutine("DestroyCountDown");
 
@@ -44,22 +50,30 @@ public class Projectile : ServerObject
     }
 
     [ServerCallback]
-    void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
-        if (DestroyOnCharacterHit && other.tag == TargetTag)
+
+        GameObject parent = GetRootCharacter(other);
+
+        if (DestroyOnCharacterHit && TargetTags.Contains(parent.tag))
         {
-            if (other.TryGetComponent(out Character character))
+            if (parent.TryGetComponent(out Character character))
             {
+                character.Damage(DamageWhenCharacterHit);
+
                 ServerDestroy();
             }
         }
     }
 
     [ServerCallback]
-    void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
-        if (CollisionMask == (CollisionMask | (1 << other.gameObject.layer)))
+        if (DestoryWhenColliding && CollisionMask == (CollisionMask | (1 << other.gameObject.layer)))
+        {
             ServerDestroy();
+        }
+            
     }
 
     [ServerCallback]
@@ -73,6 +87,18 @@ public class Projectile : ServerObject
     protected virtual void Move()
     {
         transform.position += transform.forward * Speed * Time.deltaTime;
+    }
+
+    private GameObject GetRootCharacter(Collider other)
+    {
+        Transform current = other.transform;
+
+        while (current.parent != null)
+        {
+            current = current.parent;
+        }
+
+        return current.gameObject;
     }
 
 }

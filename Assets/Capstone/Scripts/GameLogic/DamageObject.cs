@@ -33,7 +33,7 @@ public class DamageObject : ServerObject
     {
         GameObject root = GetRootCharacter(other);
 
-        if (IsEnabled && EnterDamage != 0 && TargetTags.Contains(root.tag) && root.TryGetComponent(out Character character))
+        if (IsEnabled && EnterDamage != 0 && TargetTags.Contains(other.tag) && TargetTags.Contains(root.tag) && root.TryGetComponent(out Character character))
         {
             if (!Characters.Contains(character))
             {

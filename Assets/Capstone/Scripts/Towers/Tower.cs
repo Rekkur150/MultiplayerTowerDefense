@@ -31,6 +31,9 @@ public class Tower : Character
 
     protected new void Awake()
     {
+
+        Debug.Log("This is running");
+
         base.Awake();
 
         if (isServer)
