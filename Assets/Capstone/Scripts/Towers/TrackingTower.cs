@@ -19,6 +19,9 @@ public class TrackingTower : MonoBehaviour
     {
         ProjectileTower = GetComponent<ProjectileTower>();
 
+        if (Barrel == null || Turret == null)
+            return;
+
         if (Barrel.parent != Turret)
             Barrel.parent = Turret;
     }
@@ -35,7 +38,7 @@ public class TrackingTower : MonoBehaviour
         if (Turret != null)
             Turret.LookAt(tempPosition);
 
-        if (Turret != null)
+        if (Barrel != null)
             Barrel.LookAt(ProjectileTower.PredictedTargetLocation);
     }
 }
