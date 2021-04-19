@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1579834516992318641}
   - component: {fileID: 7372990755390596332}
   - component: {fileID: 5426728501429903069}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: SpawnSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4886,8 +4886,8 @@ GameObject:
   - component: {fileID: 3228540809973370794}
   - component: {fileID: 8997972788388216207}
   - component: {fileID: 4230794960863373498}
-  - component: {fileID: 7086571731607169136}
   - component: {fileID: 2095270951616154932}
+  - component: {fileID: 7086571731607169136}
   m_Layer: 10
   m_Name: Arrow
   m_TagString: Untagged
@@ -5024,26 +5024,6 @@ MonoBehaviour:
   localPositionSensitivity: 0.01
   localRotationSensitivity: 0.01
   localScaleSensitivity: 0.01
---- !u!114 &7086571731607169136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8934214757459350803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd360132f581ba4498a5d5f769ef1c13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  Speed: 10
-  CollisionMask:
-    serializedVersion: 2
-    m_Bits: 9
-  DestroyOnCharacterHit: 1
-  TargetTag: Enemy
 --- !u!114 &2095270951616154932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5063,3 +5043,25 @@ MonoBehaviour:
   - Enemy
   EnterDamage: 5
   ExitDamage: 0
+--- !u!114 &7086571731607169136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934214757459350803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd360132f581ba4498a5d5f769ef1c13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  Speed: 20
+  CollisionMask:
+    serializedVersion: 2
+    m_Bits: 9
+  DestroyOnCharacterHit: 1
+  DestoryWhenColliding: 1
+  TargetTags:
+  - Enemy

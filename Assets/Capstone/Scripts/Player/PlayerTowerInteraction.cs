@@ -59,7 +59,6 @@ public class PlayerTowerInteraction : NetworkBehaviour
 
     private void OnDisable()
     {
-        Debug.Log("On disabled");
         CancelRepairTower();
     }
 

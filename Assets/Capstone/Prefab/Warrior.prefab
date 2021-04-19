@@ -1130,6 +1130,8 @@ MonoBehaviour:
   SpawnableTowers:
   - {fileID: 2911572444828614214, guid: 3276f0c6f00d5c347986b78dc0efe0cd, type: 3}
   - {fileID: 715027212618022199, guid: 62c994b2f80b4004a830f886cbe3fa86, type: 3}
+  - {fileID: 7896113923664358492, guid: aae00a3d5addbf14c8500a7498222a5d, type: 3}
+  - {fileID: 4249364853063806574, guid: e2ec147cc5222c44b9b3200269fd93cb, type: 3}
 --- !u!114 &1561058589907593161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1249,6 +1251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60edc8949b720e84faaf2c8431282a1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
   playerInterface: {fileID: 0}
   menu: {fileID: 6109776806702174898}
 --- !u!1 &8816724175004691014
