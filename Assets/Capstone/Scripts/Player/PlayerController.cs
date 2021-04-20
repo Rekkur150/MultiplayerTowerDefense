@@ -251,6 +251,9 @@ public class PlayerController : Character
 
     private void UpdateUsernameText(string oldUsername, string newUsername)
     {
+        if (usernameText == null)
+            return;
+
         usernameText.text = newUsername;
     }
 

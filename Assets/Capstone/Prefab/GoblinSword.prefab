@@ -111,7 +111,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &335566117297828949
 MonoBehaviour:
@@ -232,7 +232,7 @@ MonoBehaviour:
   towerFinder: {fileID: 335566117297828949}
   Animator: {fileID: 469861046165748475}
   damageObject: {fileID: 2799213156316337199}
-  ManaDroppedOnDeath: 5
+  ManaDroppedOnDeath: 20
 --- !u!114 &6336526778519569705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,7 +354,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 3.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5930276694477905997
 MonoBehaviour:
