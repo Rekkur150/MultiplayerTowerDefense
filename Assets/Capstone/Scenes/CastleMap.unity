@@ -6267,7 +6267,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 26.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10328,7 +10328,55 @@ MonoBehaviour:
       spawning:
       - Wait: 0
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
-        NumberOfEnemies: 5
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 10
+    - spawnPoint: {fileID: 1866800937}
+      spawning:
+      - Wait: 1
+        EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 10
+  - EnemySpawns:
+    - spawnPoint: {fileID: 156677514}
+      spawning:
+      - Wait: 0
+        EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 10
+      - Wait: 5
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 2
+        TimeBetweenEnemySpawn: 10
+    - spawnPoint: {fileID: 1866800937}
+      spawning:
+      - Wait: 1
+        EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 10
+      - Wait: 5
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 2
+        TimeBetweenEnemySpawn: 10
+  - EnemySpawns:
+    - spawnPoint: {fileID: 156677514}
+      spawning:
+      - Wait: 0
+        EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 10
+      - Wait: 5
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 2
+        TimeBetweenEnemySpawn: 10
+    - spawnPoint: {fileID: 1866800937}
+      spawning:
+      - Wait: 1
+        EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 10
+      - Wait: 5
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 2
         TimeBetweenEnemySpawn: 10
   isWaveActive: 0
   currentWaveEnemies: []
@@ -12589,7 +12637,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 29.8
+  m_fontSize: 22.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -19528,15 +19576,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3796442353211492113, guid: 80d141cefa3950943b2ab45a1c6c6158, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.54
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 3796442353211492113, guid: 80d141cefa3950943b2ab45a1c6c6158, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.22
+      value: 4.99
       objectReference: {fileID: 0}
     - target: {fileID: 3796442353211492113, guid: 80d141cefa3950943b2ab45a1c6c6158, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 25.1
+      value: 6.75
       objectReference: {fileID: 0}
     - target: {fileID: 3796442353211492113, guid: 80d141cefa3950943b2ab45a1c6c6158, type: 3}
       propertyPath: m_LocalRotation.w
