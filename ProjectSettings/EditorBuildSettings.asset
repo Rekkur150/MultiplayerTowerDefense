@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Capstone/Scenes/MainMenu.unity
     guid: 9f12d9e0c69c81146a49068758d3c3ec
   - enabled: 1
-    path: Assets/Capstone/Scenes/ZachTestScene.unity
-    guid: 544b7dc0b29715849932766415907258
+    path: Assets/Capstone/Scenes/CraneBranchScene.unity
+    guid: 1cf32468fe4840a42a5655cae5e0b673
+  - enabled: 1
+    path: Assets/Capstone/Scenes/CraneBranchZachScene.unity
+    guid: 828862bc2c83b2c408024e6640b709be
   m_configObjects: {}

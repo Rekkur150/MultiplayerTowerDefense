@@ -8,8 +8,8 @@ public class DamageObject : ServerObject
     [Header("Damage Object")]
         [Tooltip("Can this object do damage to other objects")]
         public bool IsEnabled = true;
-        [Tooltip("The tag it looks for on a collider's gameobject when determining to damage character")]
-        public string TargetTag;
+    [Tooltip("The tag it looks for on a collider's gameobject when determining to damage character")]
+    public List<string> TargetTags = new List<string>();
 
     [Header("Enter Damage")]
         [Tooltip("The amount of damage it does to other characters, when a collider enters")]
@@ -18,6 +18,8 @@ public class DamageObject : ServerObject
     [Header("Exit Damage")]
         [Tooltip("The amount of damage it does to other characters, when they exit the collider")]
         public float ExitDamage = 0;
+
+    private List<Character> Characters = new List<Character>();
 
     [ServerCallback]
     void Start()
@@ -29,18 +31,44 @@ public class DamageObject : ServerObject
     [ServerCallback]
     void OnTriggerEnter(Collider other)
     {
-        if (IsEnabled && EnterDamage != 0 && other.tag == TargetTag && other.TryGetComponent(out Character character))
+        GameObject root = GetRootCharacter(other);
+
+        if (IsEnabled && EnterDamage != 0 && TargetTags.Contains(other.tag) && TargetTags.Contains(root.tag) && root.TryGetComponent(out Character character))
         {
-            character.Damage(EnterDamage);
+            if (!Characters.Contains(character))
+            {
+                Characters.Add(character);
+                character.Damage(EnterDamage);
+            }
         }
     }
 
     [ServerCallback]
     void OnTriggerExit(Collider other)
     {
-        if (IsEnabled && ExitDamage != 0 && other.tag == TargetTag && other.TryGetComponent(out Character character))
+        GameObject root = GetRootCharacter(other);
+
+        if (TargetTags.Contains(root.tag) && root.TryGetComponent(out Character character))
         {
-            character.Damage(ExitDamage);
+            if (Characters.Contains(character))
+                Characters.Remove(character);
+
+            if (IsEnabled && ExitDamage != 0)
+                character.Damage(ExitDamage);
+
         }
+    }
+
+    [ServerCallback]
+    private GameObject GetRootCharacter(Collider other)
+    {
+        Transform current = other.transform;
+
+        while (current.parent != null)
+        {
+            current = current.parent;
+        }
+
+        return current.gameObject;
     }
 }

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using System;
+using TMPro;
+using Steamworks;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : Character
@@ -40,14 +42,15 @@ public class PlayerController : Character
         private bool IsGrounded;
         private bool CanJump;
 
+    [SyncVar(hook = nameof(UpdateUsernameText))]
+    private string username;
+    public TMP_Text usernameText;
+
     [Header("Character Animation")]
         public Animator CharacterAnimator;
 
     [Header("Camera")]
         public GameObject Camera;
-
-    [System.NonSerialized]
-    public bool isReady;
 
     void Start()
     {
@@ -74,7 +77,9 @@ public class PlayerController : Character
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
+            SetUsername(SteamFriends.GetPersonaName());
         }
+
     }
 
     private void OnEnable()
@@ -90,8 +95,6 @@ public class PlayerController : Character
             if (CanPlayerControlCharacter)
             {
                 MoveCharacter();
-
-                PlayerInput();
 
                 if (Cursor.lockState == CursorLockMode.Locked)
                 {
@@ -207,23 +210,6 @@ public class PlayerController : Character
             obj.SetActive(isEnabled);
         }
     }
-
-    private void PlayerInput()
-    {
-        if (Input.GetKeyDown(KeyCode.X))
-        {
-            if (!isReady)
-            {
-                isReady = true;
-                WaveManager.singleton.ReadyPlayer();
-            }
-            else
-            {
-                isReady = false;
-                WaveManager.singleton.UnreadyPlayer();
-            }
-        }
-    }
     protected override void Died()
     {
         if (OnDeath != null)
@@ -255,6 +241,17 @@ public class PlayerController : Character
     public class MyEventArgs : EventArgs
     {
 
+    }
+
+    [Command(requiresAuthority = false)]
+    private void SetUsername(string newName)
+    {
+        username = newName;
+    }
+
+    private void UpdateUsernameText(string oldUsername, string newUsername)
+    {
+        usernameText.text = newUsername;
     }
 
 }

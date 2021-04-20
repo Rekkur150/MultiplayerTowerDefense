@@ -14,12 +14,13 @@ public class UIRenderCharacterHealth: MonoBehaviour
             Debug.LogError("Character Missing!", this);
 
         UISliderFloatIndicator.SetMaxValue(Character.MaxHealth);
+        UISliderFloatIndicator.SetValue(Character.GetHealth());
         Character.OnHealthChange += new Character.ChangeHealthHandler(HealthUpdated);
 
     }
 
     private void HealthUpdated(float newHealth)
     {
-        UISliderFloatIndicator.SetValue(newHealth);
+        UISliderFloatIndicator.SetValueOverTime(newHealth, 0.2f);
     }
 }

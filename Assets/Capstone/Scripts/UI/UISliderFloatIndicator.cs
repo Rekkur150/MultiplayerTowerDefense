@@ -1,69 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UISliderFloatIndicator : MonoBehaviour
 {
-
-    [Tooltip("The inital maximum value of the indicated value")]
-    public float InitalMaxValue;
-
     [Tooltip("The other that will be moved in order to indicate the value")]
-    public RectTransform Slider;
+    public Slider slider;
 
     [Tooltip("Starts the slider initally at zero, instead of full value")]
     public bool StartAtZero = false;
 
-    private Vector3 OriginalPosition;
-    private float PositionMovementPerValueChange;
-    private float MaxValue;
-    private float Value;
     private IEnumerator ChangeValueCoroutine;
 
     // Start is called before the first frame update
-    public void Start()
+    public void Awake()
     {
-        if (Slider == null)
+        if (slider == null)
             Debug.LogError("No Slider in this UISlider!", this);
 
-        MaxValue = InitalMaxValue;
-        Value = InitalMaxValue;
-
-        if (OriginalPosition == null)
-            OriginalPosition = Slider.localPosition;
-
-        PositionMovementPerValueChange = Slider.rect.width / MaxValue;
-        if (PositionMovementPerValueChange == Mathf.Infinity)
-            PositionMovementPerValueChange = Slider.rect.width;
+        slider.minValue = 0;
+        slider.maxValue = 100;
 
         if (StartAtZero)
-            SetValue(0);
+            SetValue(0f);
+        else SetValue(slider.maxValue);
 
     }
     public void SetValue(float value)
     {
-        Value = value;
-        Vector3 newPosition = OriginalPosition;
-        newPosition.x = OriginalPosition.x + PositionMovementPerValueChange * (value - MaxValue);
-
-        Slider.localPosition = newPosition;
+        slider.value = value;
     }
 
     public void SetMaxValue(float newMaxValue)
     {
-        if (newMaxValue <= 0f)
-        {
-            SetValue(0f);
-            return;
-        }
-            
-
-        MaxValue = newMaxValue;
-        PositionMovementPerValueChange = Slider.rect.width / newMaxValue;
+        slider.maxValue = newMaxValue;
     }
 
     public void SetValueOverTime(float newValue, float time)
     {
+
+        if (gameObject.activeInHierarchy == false)
+        {
+            SetValue(newValue);
+            return;
+        }
+
         if (ChangeValueCoroutine != null)
             StopValueOverTime();
 
@@ -80,12 +62,15 @@ public class UISliderFloatIndicator : MonoBehaviour
 
     private IEnumerator ChangeValueOverTime(float newValue, float time)
     {
-        float rate = (newValue - Value) / time;
+        float rate = (newValue - slider.value) / time;
+        float originalValue = slider.value;
 
-        for (float i = 0.1f; i < time; i = i + 0.1f)
+        for (float i = 0.01f; i <= time; i = i + 0.01f)
         {
-            SetValue(rate * i);
-            yield return new WaitForSeconds(0.1f);
+            SetValue(originalValue + (rate * i));
+            yield return new WaitForSeconds(0.01f);
         }
+
+        SetValue(newValue);
     }
 }

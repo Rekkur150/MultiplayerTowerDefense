@@ -31,8 +31,11 @@ public class TrackingTower : MonoBehaviour
 
         Vector3 tempPosition = ProjectileTower.PredictedTargetLocation;
         tempPosition.y = Turret.position.y;
-        Turret.LookAt(tempPosition);
+        
+        if (Turret != null)
+            Turret.LookAt(tempPosition);
 
-        Barrel.LookAt(ProjectileTower.PredictedTargetLocation);
+        if (Turret != null)
+            Barrel.LookAt(ProjectileTower.PredictedTargetLocation);
     }
 }

@@ -44,6 +44,7 @@ public class ProjectileTower : Tower
     [ServerCallback]
     private void AttemptAttack()
     {
+
         if (CanAttack)
         {
             CanAttack = false;
@@ -77,6 +78,7 @@ public class ProjectileTower : Tower
     [ServerCallback]
     protected virtual void LaunchAttack(Character target)
     {
+
         GameObject newGameObject = Instantiate(Projectile);
         newGameObject.transform.position = ProjectileSpawnLocation.position;
 

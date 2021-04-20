@@ -14,7 +14,9 @@ public class SteamLobby : MonoBehaviour
 
     private NetworkManager networkManager;
 
-    private void Start()
+    public static CSteamID LobbyID { get; private set; }
+
+    private void Awake()
     {
         networkManager = GetComponent<NetworkManager>();
 
@@ -27,7 +29,6 @@ public class SteamLobby : MonoBehaviour
 
     public void HostLobby()
     {
-
         SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);
     }
 
@@ -35,8 +36,11 @@ public class SteamLobby : MonoBehaviour
     {
         if (callback.m_eResult != EResult.k_EResultOK)
         {
+            buttons.SetActive(true);
             return;
         }
+
+        LobbyID = new CSteamID(callback.m_ulSteamIDLobby);
 
         networkManager.StartHost();
 
@@ -61,5 +65,15 @@ public class SteamLobby : MonoBehaviour
         networkManager.StartClient();
 
         buttons.SetActive(false);
+    }
+
+    public void InviteFriends()
+    {
+        SteamFriends.ActivateGameOverlayInviteDialog(LobbyID);
+    }
+
+    public void JoinFriend()
+    {
+        SteamFriends.ActivateGameOverlay("Friends");
     }
 }
