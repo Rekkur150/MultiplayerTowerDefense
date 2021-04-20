@@ -51,6 +51,11 @@ public class PlayerMenu : NetworkBehaviour
         NetworkManager.singleton.ServerChangeScene(scene);
     }
 
+    public void Restart()
+    {
+        NetworkManager.singleton.ServerChangeScene(SceneManager.GetActiveScene().name);
+    }
+
     public void Disconnect()
     {
         if (isServer)
