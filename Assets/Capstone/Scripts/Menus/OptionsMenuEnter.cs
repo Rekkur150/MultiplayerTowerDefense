@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class OptionsMenuEnter : MonoBehaviour
 {
+    /*void Start()
+    {
+        gameObject.SetActive(false);
+    }*/
 
     public void Activate()
     {
@@ -15,11 +19,17 @@ public class OptionsMenuEnter : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    //onyl works when game is built
+    //only works when game is built
     public void fullScreenOnOff()
     {
         Screen.fullScreen = !Screen.fullScreen;
         Debug.Log("Toggled Fullscreen");
+    }
+
+    IEnumerator OptionsWorkaround()
+    {
+        yield return new WaitForSeconds(0.01f);
+        gameObject.SetActive(false);
     }
 }
     
