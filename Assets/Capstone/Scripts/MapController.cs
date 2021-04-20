@@ -15,6 +15,7 @@ public class MapController : NetworkBehaviour
     public float TowerRefundPercentage = 0.5f;
 
     public AudioSource gameOverMusic;
+    public GameObject shutUpMusicWeSadNow;
 
     [HideInInspector]
     public bool gameOver = false;
@@ -79,6 +80,7 @@ public class MapController : NetworkBehaviour
     public void ClientGameOver()
     {
         PlayerInformationPanel.singleton.UpdateText("The Crystal Was Destroyed! The game is over, host must restart the map");
+        shutUpMusicWeSadNow.SetActive(false);
         gameOverMusic.Play();
         //StartCoroutine(GameOverCoroutine());
     }
