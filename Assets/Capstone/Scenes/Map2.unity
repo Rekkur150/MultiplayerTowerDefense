@@ -366,6 +366,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &586549121
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 586549122}
+  m_Layer: 0
+  m_Name: DeathRespawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &586549122
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586549121}
+  m_LocalRotation: {x: -0, y: 0.9763763, z: -0.21607745, w: 0}
+  m_LocalPosition: {x: -4.05, y: 11.8, z: 29.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 24.957, y: 180, z: 0}
 --- !u!1 &797167807 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 504ecb6d1511a86498ba4d1ac602f30a, type: 3}
@@ -477,7 +507,6 @@ GameObject:
   - component: {fileID: 946111106}
   - component: {fileID: 946111105}
   - component: {fileID: 946111104}
-  - component: {fileID: 946111109}
   - component: {fileID: 946111108}
   m_Layer: 0
   m_Name: ClientPlayerManager
@@ -534,6 +563,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  SpectatorSpawnLocation: {fileID: 586549122}
   PlayerDeathPrefab: {fileID: 8567263292401659181, guid: b375235113647dc4790d1a1f15beae20, type: 3}
   RespawnTime: 10
 --- !u!4 &946111103
@@ -622,24 +652,6 @@ MonoBehaviour:
   isWaveActive: 0
   Enabled: 1
   currentWaveEnemies: []
---- !u!114 &946111109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946111099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1d92eff5f5319284caecb6a10078443a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  BuildTimeMultiplier: 1
-  TowerRefundPercentage: 0.5
-  gameOver: 0
-  mapOver: 0
 --- !u!1 &1326248027
 GameObject:
   m_ObjectHideFlags: 0

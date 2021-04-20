@@ -113,6 +113,7 @@ public class WaveManager : NetworkBehaviour
         if (OnWaveStarted != null)
             OnWaveStarted(this);
 
+        ReadyNetworkIdentities.Clear();
 
         isWaveActive = true;
 

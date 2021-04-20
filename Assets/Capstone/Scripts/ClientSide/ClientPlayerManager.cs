@@ -7,6 +7,8 @@ public class ClientPlayerManager : NetworkBehaviour
 {
     public static ClientPlayerManager singleton;
 
+    public Transform SpectatorSpawnLocation; 
+
     [Tooltip("The local player's character")]
     private Character playerCharacter;
     public Character PlayerCharacter
@@ -44,6 +46,10 @@ public class ClientPlayerManager : NetworkBehaviour
     public void ClientCharacterDied(GameObject PlayerGameObject)
     {
         GameObject PlayerDeathObject = Instantiate(PlayerDeathPrefab);
+
+        if (SpectatorSpawnLocation != null)
+            PlayerDeathObject.transform.position = SpectatorSpawnLocation.position;
+
         NetworkServer.Spawn(PlayerDeathObject, PlayerGameObject.GetComponent<NetworkIdentity>().connectionToClient);
 
         GameObjectActive(PlayerGameObject, false);
