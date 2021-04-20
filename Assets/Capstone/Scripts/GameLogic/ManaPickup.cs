@@ -67,6 +67,9 @@ public class ManaPickup : NetworkBehaviour
         if (!other.gameObject.TryGetComponent(out PlayerInterface player))
             return;
 
+        if (ClientMoneyController.singleton.Money + Value > ClientMoneyController.singleton.MaxValue)
+            return;
+
         ClientMoneyController.singleton.RemoveMoney(-Value);
         ManaDropper.singleton.DestroyMana(gameObject);
     }

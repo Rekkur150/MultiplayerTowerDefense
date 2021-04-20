@@ -158,6 +158,9 @@ public class PlayerTowerInteraction : NetworkBehaviour
             float Difference = tower.tower.MaxHealth - tower.tower.GetHealth();
             Difference = Mathf.Min(Difference, 0.5f);
 
+            if (ClientMoneyController.singleton.Money - (ManaPerHealth * Difference) < 0)
+                break;
+
             tower.tower.Damage(-Difference);
             ClientMoneyController.singleton.RemoveMoney(ManaPerHealth * Difference);
 
