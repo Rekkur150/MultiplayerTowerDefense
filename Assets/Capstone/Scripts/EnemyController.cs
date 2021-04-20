@@ -133,15 +133,21 @@ public class EnemyController : Character
     {
         if (Vector3.Distance(this.transform.position, target) <= 3)
         {
-            Animator.SetBool("Attacking", true);
+            AnimatorSetBool("Attacking", true);
             damageObject.IsEnabled = true;
             FaceTarget(target);
         }
         else
         {
-            Animator.SetBool("Attacking", false);
+            AnimatorSetBool("Attacking", false);
             damageObject.IsEnabled = false;
         }
+    }
+
+    [ClientRpc]
+    private void AnimatorSetBool(string name, bool value)
+    {
+        Animator.SetBool(name, value);
     }
 
     [ServerCallback]
