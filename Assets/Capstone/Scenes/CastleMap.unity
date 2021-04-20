@@ -6612,7 +6612,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.35
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -13862,7 +13862,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 22.75
+  m_fontSize: 30
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -15848,6 +15848,9 @@ MonoBehaviour:
   - {fileID: 8158006845841375099, guid: 02a796cd5e4e21c48b64de3fc320e443, type: 3}
   - {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
   - {fileID: 555661912749405231, guid: 82bb25056746d05448d1b1ff68ee140a, type: 3}
+  - {fileID: 7896113923664358492, guid: aae00a3d5addbf14c8500a7498222a5d, type: 3}
+  - {fileID: 4510082093031583176, guid: 9d86bf55df152a647988ca106f039e63, type: 3}
+  - {fileID: 4249364853063806574, guid: e2ec147cc5222c44b9b3200269fd93cb, type: 3}
 --- !u!4 &1530577549
 Transform:
   m_ObjectHideFlags: 0
