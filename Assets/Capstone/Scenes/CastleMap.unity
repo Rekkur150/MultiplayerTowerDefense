@@ -4510,6 +4510,49 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -9063915283591106651, guid: 2fdac0224837a3045a2dd87204a14c81, type: 3}
+--- !u!1 &384161402
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 384161404}
+  - component: {fileID: 384161403}
+  m_Layer: 0
+  m_Name: NetworkSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &384161403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384161402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41f84591ce72545258ea98cb7518d8b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &384161404
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 384161402}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 2.76, y: 4.016, z: 25.55}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1001 &394565913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10170,7 +10213,6 @@ GameObject:
   - component: {fileID: 946111106}
   - component: {fileID: 946111105}
   - component: {fileID: 946111104}
-  - component: {fileID: 946111107}
   - component: {fileID: 946111109}
   - component: {fileID: 946111108}
   m_Layer: 0
@@ -10291,23 +10333,6 @@ MonoBehaviour:
   TowerRefundPercentage: 0.5
   gameOver: 0
   mapOver: 0
---- !u!114 &946111107
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 946111099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1be9301d9a873564aacef57a4f7916a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  Money: 100
-  DefaultMoney: 500
-  MaxValue: 1000
 --- !u!114 &946111108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10331,6 +10356,7 @@ MonoBehaviour:
         NumberOfEnemies: 5
         TimeBetweenEnemySpawn: 10
   isWaveActive: 0
+  Enabled: 1
   currentWaveEnemies: []
 --- !u!114 &946111109
 MonoBehaviour:
