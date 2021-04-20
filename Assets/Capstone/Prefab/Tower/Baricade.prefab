@@ -499,7 +499,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 1.345, y: 0.65, z: 0.5}
   m_MoveThreshold: 0.1
-  m_Carve: 1
+  m_Carve: 0
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0.51, z: -0.27}
   m_TimeToStationary: 0.5
@@ -704,7 +704,7 @@ PrefabInstance:
       objectReference: {fileID: 2999963877971927485}
     - target: {fileID: 759430597740008190, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 759430597740008190, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_IsActive
@@ -712,11 +712,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1533016034758395112, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1533016034887182512, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1533016034887182519, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -728,19 +728,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1533016035004690441, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1533016036394487337, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1533016036447812783, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4256001866751134015, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4256001866835087745, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_AnchorMax.x
@@ -752,23 +752,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4256001866835087750, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4256001867516476894, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4256001867991319961, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4256001868011026207, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4585017903745382757, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5878407083140785424, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Pivot.x
@@ -860,7 +860,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5878407083140785428, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_Layer
-      value: 14
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5878407083140785430, guid: 196ac38204742384bb495056ddf32dbe, type: 3}
       propertyPath: m_PresetInfoIsWorld
