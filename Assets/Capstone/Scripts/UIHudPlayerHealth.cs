@@ -7,6 +7,8 @@ public class UIHudPlayerHealth : MonoBehaviour
 {
     public Character Character;
 
+    public ClientPlayerManager clientPlayerManger;
+
     public UISliderFloatIndicator UISliderFloatIndicator;
     public TextMeshProUGUI HealthValue;
 
@@ -20,8 +22,16 @@ public class UIHudPlayerHealth : MonoBehaviour
         if (HealthValue == null)
             Debug.LogError("No text area here", this);
 
-        ClientPlayerManager.singleton.OnPlayerCharacterUpdate += new ClientPlayerManager.PlayerCharacterChangedHandler(CharacterChanged);
-        EventCall = new Character.ChangeHealthHandler(HealthUpdated);
+        if (ClientPlayerManager.singleton != null)
+        {
+            ClientPlayerManager.singleton.OnPlayerCharacterUpdate += new ClientPlayerManager.PlayerCharacterChangedHandler(CharacterChanged);
+            EventCall = new Character.ChangeHealthHandler(HealthUpdated);
+        } else
+        {
+            clientPlayerManger.OnPlayerCharacterUpdate += new ClientPlayerManager.PlayerCharacterChangedHandler(CharacterChanged);
+            EventCall = new Character.ChangeHealthHandler(HealthUpdated);
+        }
+
 
     }
 

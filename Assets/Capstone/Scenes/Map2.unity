@@ -15327,5 +15327,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 8783369930114249486, guid: 2db408d55a871844d8846d6354511c5b, type: 3}
+      propertyPath: clientPlayerManger
+      value: 
+      objectReference: {fileID: 1323334755}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2db408d55a871844d8846d6354511c5b, type: 3}

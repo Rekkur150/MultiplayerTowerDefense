@@ -18528,6 +18528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Character: {fileID: 0}
+  clientPlayerManger: {fileID: 946111102}
   UISliderFloatIndicator: {fileID: 1746825061}
   HealthValue: {fileID: 402245626}
 --- !u!1001 &1774465227
