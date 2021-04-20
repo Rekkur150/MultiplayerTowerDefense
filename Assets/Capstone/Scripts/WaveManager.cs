@@ -120,15 +120,13 @@ public class WaveManager : NetworkBehaviour
         NumberOfEnemiesThatDied = 0;
 
 
-        foreach (Wave wave in waves)
-        {
+        Wave wave = waves[currentWave];
 
-            for (int i = 0; i < wave.EnemySpawns.Count; i++)
+        for (int i = 0; i < wave.EnemySpawns.Count; i++)
+        {
+            for (int x = 0; x < wave.EnemySpawns[i].spawning.Count; x++)
             {
-                for (int x = 0; x < wave.EnemySpawns[i].spawning.Count; x++)
-                {
-                    NumberOfEnemiesSpawning += wave.EnemySpawns[i].spawning[x].NumberOfEnemies;
-                }
+                NumberOfEnemiesSpawning += wave.EnemySpawns[i].spawning[x].NumberOfEnemies;
             }
         }
 
