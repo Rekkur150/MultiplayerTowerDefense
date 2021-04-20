@@ -7272,7 +7272,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &769043397
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7488,7 +7488,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -8563,7 +8563,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9300,7 +9300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 997335299}
   - component: {fileID: 997335300}
-  - component: {fileID: 997335301}
   m_Layer: 5
   m_Name: Volume
   m_TagString: Untagged
@@ -9381,7 +9380,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 997335301}
+      - m_Target: {fileID: 1183159769}
         m_TargetAssemblyTypeName: SoundModifier, Assembly-CSharp
         m_MethodName: SetMasterVolume
         m_Mode: 0
@@ -9393,20 +9392,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &997335301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997335298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7e2748292c20da41967a44e3fff11c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  masterMixer: {fileID: 24100000, guid: 9b2a9a06fc83b234f89d82702aa05965, type: 2}
-  audioSlider: {fileID: 997335300}
 --- !u!1 &1020115599
 GameObject:
   m_ObjectHideFlags: 0
@@ -10393,7 +10378,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16.7
+  m_fontSize: 28.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11160,6 +11145,7 @@ GameObject:
   - component: {fileID: 1183159767}
   - component: {fileID: 1183159766}
   - component: {fileID: 1183159765}
+  - component: {fileID: 1183159769}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -11252,6 +11238,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1183159769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183159764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7e2748292c20da41967a44e3fff11c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  masterMixer: {fileID: 24100000, guid: 9b2a9a06fc83b234f89d82702aa05965, type: 2}
+  audioSlider: {fileID: 997335300}
 --- !u!1 &1192996366
 GameObject:
   m_ObjectHideFlags: 0
@@ -14680,7 +14680,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 27.95
+  m_fontSize: 32
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
