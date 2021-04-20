@@ -4152,7 +4152,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   BuildTimeMultiplier: 1
-  TowerRefundPercentage: 0.5
+  TowerRefundPercentage: 1
   gameOver: 0
   mapOver: 0
 --- !u!1001 &972731553
