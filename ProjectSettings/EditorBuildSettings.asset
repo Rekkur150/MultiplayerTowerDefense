@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Capstone/Scenes/MainMenu.unity
     guid: 9f12d9e0c69c81146a49068758d3c3ec
   - enabled: 1
-    path: Assets/Capstone/Scenes/CraneBranchScene.unity
-    guid: 1cf32468fe4840a42a5655cae5e0b673
+    path: Assets/Capstone/Scenes/Lobby.unity
+    guid: aee30c4ec8edd1344a698d3e4d88b78f
   - enabled: 1
-    path: Assets/Capstone/Scenes/CraneBranchZachScene.unity
-    guid: 828862bc2c83b2c408024e6640b709be
+    path: Assets/Capstone/Scenes/CastleMap.unity
+    guid: f0da6899bd4f5c4488728b0e808a3505
+  - enabled: 1
+    path: Assets/Capstone/Scenes/Map2.unity
+    guid: 1e3909af38381e640b41d61dd52988a4
   m_configObjects: {}

@@ -44,7 +44,7 @@ public class AreaFinder : MonoBehaviour
     {
         GameObject rootGameObject = GetRootCharacter(other);
 
-        if (rootGameObject.tag == TargetTag && rootGameObject.TryGetComponent(out Character character))
+        if (other.tag == TargetTag && rootGameObject.tag == TargetTag && rootGameObject.TryGetComponent(out Character character))
         {
             if (TargetCharacters.Contains(character))
                 return;
@@ -57,7 +57,7 @@ public class AreaFinder : MonoBehaviour
     {
         GameObject rootGameObject = GetRootCharacter(other);
 
-        if (rootGameObject.tag == TargetTag && rootGameObject.TryGetComponent(out Character character))
+        if (other.tag == TargetTag && rootGameObject.tag == TargetTag && rootGameObject.TryGetComponent(out Character character))
         {
             TargetCharacters.Remove(character);
         }

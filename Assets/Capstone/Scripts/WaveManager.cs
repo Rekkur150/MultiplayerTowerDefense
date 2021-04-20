@@ -16,6 +16,8 @@ public class WaveManager : NetworkBehaviour
     [SyncVar]
     public bool isWaveActive = false;
 
+    public bool Enabled = true;
+
     private bool preparingWave = false;
 
     private List<NetworkConnectionToClient> ReadyNetworkIdentities = new List<NetworkConnectionToClient>();
@@ -39,7 +41,7 @@ public class WaveManager : NetworkBehaviour
     [Command(requiresAuthority = false)]
     public void ToggleReadyPlayer(NetworkConnectionToClient conn = null)
     {
-        if (conn == null || preparingWave || isWaveActive)
+        if (conn == null || preparingWave || isWaveActive || !Enabled)
             return;
 
         if (ReadyNetworkIdentities.Contains(conn))
@@ -171,6 +173,10 @@ public class WaveManager : NetworkBehaviour
     [ServerCallback]
     private void WaveFinished()
     {
+
+        if (!Enabled)
+            return;
+
         isWaveActive = false;
         currentWave++;
 
@@ -191,6 +197,9 @@ public class WaveManager : NetworkBehaviour
     [ServerCallback]
     public void AddPlayer(NetworkConnection conn)
     {
+        if (!Enabled)
+            return;
+
         if (currentWave < waves.Count && !isWaveActive)
             UpdatePlayerInformationPanel("The wave is complete press G to ready up! " + ReadyNetworkIdentities.Count + "/" + NetworkManagerTD.singleton.numPlayers);
     }
@@ -198,6 +207,9 @@ public class WaveManager : NetworkBehaviour
     [ServerCallback]
     public void RemovePlayer(NetworkConnection conn)
     {
+        if (!Enabled)
+            return;
+
         if (ReadyNetworkIdentities.Exists(item => item.connectionId == conn.connectionId))
         {
             ReadyNetworkIdentities.RemoveAll(item => item.connectionId == conn.connectionId);
