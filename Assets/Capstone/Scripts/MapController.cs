@@ -32,7 +32,7 @@ public class MapController : NetworkBehaviour
             Destroy(this);
         }
 
-        if (gameOverMusic)
+        if (gameOverMusic == null)
             Debug.LogError("No gameover music in the mapcontroller!", this);
 
 
