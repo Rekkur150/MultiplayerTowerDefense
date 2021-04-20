@@ -14680,7 +14680,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
+  m_fontSize: 27.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -14741,7 +14741,7 @@ GameObject:
   - component: {fileID: 1638082093}
   - component: {fileID: 1638082092}
   m_Layer: 0
-  m_Name: Game_Over
+  m_Name: Main_Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14757,7 +14757,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 9b2a9a06fc83b234f89d82702aa05965, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4c3bd14f46ccd0e409e9f9b40b8fee57, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0bda7fd281e48e74a841e316ceb9ac94, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
