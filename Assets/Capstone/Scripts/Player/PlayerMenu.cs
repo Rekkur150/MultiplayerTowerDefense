@@ -11,8 +11,6 @@ public class PlayerMenu : NetworkBehaviour
     public GameObject menu;
     public GameObject hostmenu;
 
-    private bool MenuOpen = false;
-
     private void Awake()
     {
 

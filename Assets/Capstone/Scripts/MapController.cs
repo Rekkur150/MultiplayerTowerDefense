@@ -14,6 +14,8 @@ public class MapController : NetworkBehaviour
     [SyncVar]
     public float TowerRefundPercentage = 0.5f;
 
+    public AudioSource gameOverMusic;
+
     [HideInInspector]
     public bool gameOver = false;
     [HideInInspector]
@@ -29,6 +31,10 @@ public class MapController : NetworkBehaviour
         {
             Destroy(this);
         }
+
+        if (gameOverMusic)
+            Debug.LogError("No gameover music in the mapcontroller!", this);
+
 
         if (isServer)
         {
@@ -59,23 +65,25 @@ public class MapController : NetworkBehaviour
         gameOver = true;
 
         ClientGameOver();
-        StartCoroutine(ServerWaitTillReload());
+/*        StartCoroutine(ServerWaitTillReload());*/
     }
 
-    [ServerCallback]
+/*    [ServerCallback]
     private IEnumerator ServerWaitTillReload()
     {
         yield return new WaitForSeconds(10f);
         NetworkManager.singleton.ServerChangeScene(SceneManager.GetActiveScene().name);
-    }
+    }*/
 
     [ClientRpc]
     public void ClientGameOver()
     {
-        StartCoroutine(GameOverCoroutine());
+        PlayerInformationPanel.singleton.UpdateText("The Crystal Was Destroyed! The game is over, host must restart the map");
+        gameOverMusic.Play();
+        //StartCoroutine(GameOverCoroutine());
     }
 
-    private IEnumerator GameOverCoroutine()
+/*    private IEnumerator GameOverCoroutine()
     {
         for (int i = 10; i >= 0; i--)
         {
@@ -84,7 +92,7 @@ public class MapController : NetworkBehaviour
         }
 
         PlayerInformationPanel.singleton.UpdateText("");
-    }
+    }*/
 
     [ServerCallback]
     public void ServerMapComplete()
