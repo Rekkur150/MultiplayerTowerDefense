@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 3852461028119121686}
   - component: {fileID: 1308292162842473750}
   - component: {fileID: 2796522842812341072}
+  - component: {fileID: -7980927803131195754}
   m_Layer: 16
   m_Name: Rat
   m_TagString: Enemy
@@ -305,6 +306,22 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &-7980927803131195754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3852461028119121685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6f3bf89aa97405989c802ba270f815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  animator: {fileID: 7213681716957540548}
 --- !u!54 &8413344078735453438
 Rigidbody:
   m_ObjectHideFlags: 0
