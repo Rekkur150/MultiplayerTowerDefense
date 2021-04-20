@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Steamworks;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(PlayerInterface))]
@@ -62,5 +63,9 @@ public class PlayerMenu : NetworkBehaviour
             NetworkManager.singleton.StopClient();
     }
 
+    public void InviteFriends()
+    {
+        SteamFriends.ActivateGameOverlayInviteDialog(SteamLobby.LobbyID);
+    }
 
 }

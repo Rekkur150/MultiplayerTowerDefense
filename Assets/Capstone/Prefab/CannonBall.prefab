@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 9213659645918548065}
   - component: {fileID: 8632823237394425826}
   - component: {fileID: 6374940845913880047}
-  m_Layer: 12
+  m_Layer: 20
   m_Name: CannonBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,7 +171,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 9
   DestroyOnCharacterHit: 0
-  DamageWhenCharacterHit: 5
   DestoryWhenColliding: 0
   TargetTags:
   - Enemy
@@ -205,7 +204,7 @@ GameObject:
   - component: {fileID: 5802606813848265834}
   - component: {fileID: 2538221764209417271}
   - component: {fileID: 1018992096949970438}
-  m_Layer: 12
+  m_Layer: 20
   m_Name: SpawnSmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}
