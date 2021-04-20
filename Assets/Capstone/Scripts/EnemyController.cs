@@ -35,7 +35,7 @@ public class EnemyController : Character
 
         FindGoal();
 
-        navAgent.stoppingDistance = .8f;
+        navAgent.stoppingDistance = .76f;
     }
 
     // Update is called once per frame
