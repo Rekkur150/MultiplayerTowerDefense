@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class OptionsMenuEnter : MonoBehaviour
 {
-    /*void Start()
-    {
-        gameObject.SetActive(false);
-    }*/
+    int initial = 1;
+    int current;
 
     public void Activate()
     {
@@ -24,12 +22,22 @@ public class OptionsMenuEnter : MonoBehaviour
     {
         Screen.fullScreen = !Screen.fullScreen;
         Debug.Log("Toggled Fullscreen");
+
+        if(current == 1)
+        {
+            current = 0;
+            PlayerPrefs.SetInt("Fullscreen", current);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            current = 1;
+            PlayerPrefs.SetInt("Fullscreen", current);
+            PlayerPrefs.Save();
+        }
+
     }
 
-    IEnumerator OptionsWorkaround()
-    {
-        yield return new WaitForSeconds(0.01f);
-        gameObject.SetActive(false);
-    }
+
 }
     
