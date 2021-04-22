@@ -794,7 +794,7 @@ MonoBehaviour:
   MaxHealth: 30
   CharacterCenter: {fileID: 0}
   BuildTime: 5
-  Cost: 125
+  Cost: 100
   SpawnOnDestroy:
   - {fileID: 9075056306453756497, guid: 9cf19f0c848ddf74ea215e6d377d0aad, type: 3}
   AreaFinder: {fileID: 4445336700310490450}
@@ -806,7 +806,7 @@ MonoBehaviour:
   - {fileID: 844127700349848164}
   - {fileID: 1089446497925312578}
   RateOfFire: 0.25
-  DamagePerAttack: 0.4
+  DamagePerAttack: 0.5
 --- !u!114 &919132147622465361
 MonoBehaviour:
   m_ObjectHideFlags: 0

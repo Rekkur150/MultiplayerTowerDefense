@@ -5041,7 +5041,7 @@ MonoBehaviour:
   IsEnabled: 1
   TargetTags:
   - Enemy
-  EnterDamage: 3.5
+  EnterDamage: 5
   ExitDamage: 0
 --- !u!114 &7086571731607169136
 MonoBehaviour:
@@ -5057,7 +5057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  Speed: 35
+  Speed: 40
   CollisionMask:
     serializedVersion: 2
     m_Bits: 9

@@ -130,7 +130,7 @@ MonoBehaviour:
   MaxHealth: 50
   CharacterCenter: {fileID: 0}
   BuildTime: 2.5
-  Cost: 100
+  Cost: 75
   SpawnOnDestroy:
   - {fileID: 9075056306453756497, guid: 9cf19f0c848ddf74ea215e6d377d0aad, type: 3}
   AreaFinder: {fileID: 5530648143629440707}

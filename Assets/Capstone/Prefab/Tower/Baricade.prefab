@@ -370,10 +370,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  MaxHealth: 150
+  MaxHealth: 250
   CharacterCenter: {fileID: 0}
   BuildTime: 7.5
-  Cost: 150
+  Cost: 125
   SpawnOnDestroy:
   - {fileID: 9075056306453756497, guid: 9cf19f0c848ddf74ea215e6d377d0aad, type: 3}
   AreaFinder: {fileID: 6469960296031165497}
