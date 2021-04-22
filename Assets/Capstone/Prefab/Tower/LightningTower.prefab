@@ -806,7 +806,7 @@ MonoBehaviour:
   - {fileID: 844127700349848164}
   - {fileID: 1089446497925312578}
   RateOfFire: 0.25
-  DamagePerAttack: 0.5
+  DamagePerAttack: 0.45
 --- !u!114 &919132147622465361
 MonoBehaviour:
   m_ObjectHideFlags: 0

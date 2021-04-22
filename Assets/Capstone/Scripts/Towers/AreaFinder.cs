@@ -111,7 +111,7 @@ public class AreaFinder : MonoBehaviour
 
             if (characterDistance < distance)
             {
-                if (!NeedLineOfSight || !Physics.Linecast(position, character.gameObject.transform.position, CantSeeMask))
+                if (!NeedLineOfSight || !Physics.Linecast(position, character.CharacterCenter.position, CantSeeMask))
                 {
                     closest = character;
                     distance = characterDistance;

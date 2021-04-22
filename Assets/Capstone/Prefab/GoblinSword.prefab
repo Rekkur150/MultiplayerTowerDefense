@@ -225,7 +225,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  MaxHealth: 30
+  MaxHealth: 20
   CharacterCenter: {fileID: 3116471707153617649}
   SpawnOnDestroy:
   - {fileID: 555661912749405231, guid: 82bb25056746d05448d1b1ff68ee140a, type: 3}
@@ -322,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7578223298632335606}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.932, z: 0}
+  m_LocalPosition: {x: 0, y: 1.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6336526778519569707}

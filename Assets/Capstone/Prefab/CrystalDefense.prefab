@@ -179,7 +179,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   MaxHealth: 100
-  CharacterCenter: {fileID: 0}
+  CharacterCenter: {fileID: 3796442353211492113}
 --- !u!1001 &3244774599238772225
 PrefabInstance:
   m_ObjectHideFlags: 0
