@@ -11290,64 +11290,96 @@ MonoBehaviour:
       spawning:
       - Wait: 0
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
-        NumberOfEnemies: 5
-        TimeBetweenEnemySpawn: 7
+        NumberOfEnemies: 6
+        TimeBetweenEnemySpawn: 10
     - spawnPoint: {fileID: 1866800937}
       spawning:
       - Wait: 1
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
-        NumberOfEnemies: 5
-        TimeBetweenEnemySpawn: 7
+        NumberOfEnemies: 6
+        TimeBetweenEnemySpawn: 10
   - EnemySpawns:
     - spawnPoint: {fileID: 156677514}
       spawning:
       - Wait: 0
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
-        NumberOfEnemies: 8
-        TimeBetweenEnemySpawn: 6
-      - Wait: 0
-        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
-        NumberOfEnemies: 4
-        TimeBetweenEnemySpawn: 3
+        NumberOfEnemies: 10
+        TimeBetweenEnemySpawn: 5
     - spawnPoint: {fileID: 1866800937}
       spawning:
       - Wait: 1
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
-        NumberOfEnemies: 8
-        TimeBetweenEnemySpawn: 6
-      - Wait: 0
+        NumberOfEnemies: 10
+        TimeBetweenEnemySpawn: 5
+    - spawnPoint: {fileID: 156677514}
+      spawning:
+      - Wait: 3
         EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
-        NumberOfEnemies: 4
-        TimeBetweenEnemySpawn: 3
+        NumberOfEnemies: 8
+        TimeBetweenEnemySpawn: 5
+    - spawnPoint: {fileID: 1866800937}
+      spawning:
+      - Wait: 3
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 8
+        TimeBetweenEnemySpawn: 5
   - EnemySpawns:
     - spawnPoint: {fileID: 156677514}
       spawning:
       - Wait: 0
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
         NumberOfEnemies: 7
-        TimeBetweenEnemySpawn: 6
+        TimeBetweenEnemySpawn: 1
       - Wait: 0
         EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
         NumberOfEnemies: 5
-        TimeBetweenEnemySpawn: 2
+        TimeBetweenEnemySpawn: 0.5
       - Wait: 0
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
         NumberOfEnemies: 4
-        TimeBetweenEnemySpawn: 6
+        TimeBetweenEnemySpawn: 1
     - spawnPoint: {fileID: 1866800937}
       spawning:
       - Wait: 1
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
         NumberOfEnemies: 7
-        TimeBetweenEnemySpawn: 6
+        TimeBetweenEnemySpawn: 1
+      - Wait: 0
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 0.5
+      - Wait: 0
+        EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
+        NumberOfEnemies: 7
+        TimeBetweenEnemySpawn: 1
+    - spawnPoint: {fileID: 156677514}
+      spawning:
+      - Wait: 10
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 7
+        TimeBetweenEnemySpawn: 2
       - Wait: 0
         EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
         NumberOfEnemies: 4
         TimeBetweenEnemySpawn: 2
       - Wait: 0
-        EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
         NumberOfEnemies: 7
-        TimeBetweenEnemySpawn: 6
+        TimeBetweenEnemySpawn: 2
+    - spawnPoint: {fileID: 1866800937}
+      spawning:
+      - Wait: 1
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 7
+        TimeBetweenEnemySpawn: 2
+      - Wait: 0
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 4
+        TimeBetweenEnemySpawn: 2
+      - Wait: 0
+        EnemyPrefab: {fileID: 3852461028119121685, guid: 596f7fe66eac2c14491aaf2237d8958e, type: 3}
+        NumberOfEnemies: 7
+        TimeBetweenEnemySpawn: 2
   - EnemySpawns:
     - spawnPoint: {fileID: 156677514}
       spawning:

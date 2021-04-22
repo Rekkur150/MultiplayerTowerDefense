@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  MaxHealth: 10
+  MaxHealth: 15
   CharacterCenter: {fileID: 5307074265001564366}
   SpawnOnDestroy:
   - {fileID: 555661912749405231, guid: 82bb25056746d05448d1b1ff68ee140a, type: 3}
