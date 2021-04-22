@@ -66,7 +66,7 @@ MonoBehaviour:
   - Player
   - Tower
   - Goal
-  EnterDamage: 1
+  EnterDamage: 4
   ExitDamage: 0
 --- !u!1 &4686106348395924678
 GameObject:
