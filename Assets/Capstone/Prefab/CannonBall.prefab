@@ -191,7 +191,7 @@ MonoBehaviour:
   IsEnabled: 1
   TargetTags:
   - Enemy
-  EnterDamage: 5
+  EnterDamage: 6
   ExitDamage: 0
 --- !u!1 &5213050848215964726
 GameObject:

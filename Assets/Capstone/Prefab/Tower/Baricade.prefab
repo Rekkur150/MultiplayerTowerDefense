@@ -372,7 +372,7 @@ MonoBehaviour:
   syncInterval: 0.1
   MaxHealth: 150
   CharacterCenter: {fileID: 0}
-  BuildTime: 5
+  BuildTime: 7.5
   Cost: 150
   SpawnOnDestroy:
   - {fileID: 9075056306453756497, guid: 9cf19f0c848ddf74ea215e6d377d0aad, type: 3}

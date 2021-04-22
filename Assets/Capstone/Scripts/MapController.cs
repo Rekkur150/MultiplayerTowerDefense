@@ -49,12 +49,14 @@ public class MapController : NetworkBehaviour
     private void WaveEnded(WaveManager wave)
     {
         BuildTimeMultiplier = 0.1f;
+        TowerRefundPercentage = 1f;
     }
 
     [ServerCallback]
     private void WaveStarted(WaveManager wave)
     {
         BuildTimeMultiplier = 1f;
+        TowerRefundPercentage = 0.5f;
     }
 
     [ServerCallback]

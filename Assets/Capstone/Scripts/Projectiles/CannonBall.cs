@@ -14,7 +14,7 @@ public class CannonBall : Projectile
         temp.isKinematic = false;
         temp.useGravity = true;
 
-        temp.AddForce(transform.forward * 5, ForceMode.VelocityChange);
+        temp.AddForce(transform.forward * Speed, ForceMode.VelocityChange);
 
     }
 

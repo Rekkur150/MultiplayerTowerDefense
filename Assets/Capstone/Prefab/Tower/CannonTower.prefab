@@ -272,7 +272,7 @@ MonoBehaviour:
   syncInterval: 0.1
   MaxHealth: 50
   CharacterCenter: {fileID: 0}
-  BuildTime: 2
+  BuildTime: 5
   Cost: 150
   SpawnOnDestroy:
   - {fileID: 9075056306453756497, guid: 9cf19f0c848ddf74ea215e6d377d0aad, type: 3}
@@ -281,7 +281,7 @@ MonoBehaviour:
   - {fileID: 8407192682971564924}
   BehavioursDisableOnTowerNonFunctional:
   - {fileID: 4698610308773429644}
-  RateOfFire: 20
+  RateOfFire: 15
   Projectile: {fileID: 4510082093031583176, guid: 9d86bf55df152a647988ca106f039e63, type: 3}
   ProjectileSpawnLocation: {fileID: 542254100491907281}
   PredictedTargetLocation: {x: 0, y: 0, z: 0}
