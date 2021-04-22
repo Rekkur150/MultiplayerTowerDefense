@@ -233,7 +233,7 @@ MonoBehaviour:
   towerFinder: {fileID: 335566117297828949}
   Animator: {fileID: 469861046165748475}
   damageObject: {fileID: 2799213156316337199}
-  ManaDroppedOnDeath: 10
+  ManaDroppedOnDeath: 15
 --- !u!114 &6336526778519569705
 MonoBehaviour:
   m_ObjectHideFlags: 0

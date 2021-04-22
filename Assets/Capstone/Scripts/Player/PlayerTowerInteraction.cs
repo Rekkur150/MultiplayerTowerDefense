@@ -150,7 +150,7 @@ public class PlayerTowerInteraction : NetworkBehaviour
     private IEnumerator ServerRepairingTower(TowerInterface tower)
     {
 
-        float ManaPerHealth = tower.tower.Cost / tower.tower.MaxHealth;
+        float ManaPerHealth = (tower.tower.Cost * 0.2f) / tower.tower.MaxHealth;
 
         while (tower.tower.GetHealth() < tower.tower.MaxHealth)
         {

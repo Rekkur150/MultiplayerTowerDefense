@@ -11290,13 +11290,13 @@ MonoBehaviour:
       spawning:
       - Wait: 0
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
-        NumberOfEnemies: 6
+        NumberOfEnemies: 10
         TimeBetweenEnemySpawn: 10
     - spawnPoint: {fileID: 1866800937}
       spawning:
       - Wait: 1
         EnemyPrefab: {fileID: 6336526778519569706, guid: f8581d5e4b61bd54ba709988471d89f4, type: 3}
-        NumberOfEnemies: 6
+        NumberOfEnemies: 10
         TimeBetweenEnemySpawn: 10
   - EnemySpawns:
     - spawnPoint: {fileID: 156677514}
